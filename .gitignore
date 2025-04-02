@@ -3,6 +3,7 @@ next-js/.env
 next-js/package-lock.json
 next-js/node_modules
 next-js/.next
+package-lock.json
 
 # Created by https://www.toptal.com/developers/gitignore/api/nextjs,visualstudiocode,macos,react,vercel
 # Edit at https://www.toptal.com/developers/gitignore?templates=nextjs,visualstudiocode,macos,react,vercel
