@@ -25,8 +25,7 @@ export default function ContextSection() {
       // Check if section is in viewport to trigger fade-in
       if (sectionRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
-        const isInViewport = rect.top <= window.innerHeight * 0.15;
-        if (isInViewport && !isVisible) {
+        if ( !isVisible) {
           setIsVisible(true);
         }
       }
