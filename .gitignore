@@ -5,6 +5,7 @@ next-js/node_modules
 next-js/.next
 package-lock.json
 dev/
+next-js/.vercel
 
 # Created by https://www.toptal.com/developers/gitignore/api/nextjs,visualstudiocode,macos,react,vercel
 # Edit at https://www.toptal.com/developers/gitignore?templates=nextjs,visualstudiocode,macos,react,vercel

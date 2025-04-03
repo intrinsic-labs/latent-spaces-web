@@ -114,7 +114,7 @@ const BlogPosts = () => {
 
   if (isLoading) {
     return (
-      <section className="py-8 md:py-16 bg-background">
+      <section className="py-8 md:px-4 md:py-16 bg-background">
         <div className="container-custom">
           <div className="space-y-6">
             {[1, 2, 3, 4, 5, 6].map((item) => (
@@ -127,7 +127,7 @@ const BlogPosts = () => {
   }
 
   return (
-    <section className="py-8 md:py-16 bg-background">
+    <section className="py-8 md:px-4 md:py-16 bg-background">
       <div className="container-custom">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 md:mb-12">
           <motion.h2 
@@ -307,7 +307,7 @@ const BlogPostItem = ({ post, index, totalCount }: BlogPostItemProps) => {
             {/* Category for desktop only - right aligned */}
             <div className="hidden md:block">
               <span 
-                className="text-sm font-light px-4 py-1.5 rounded-full border border-neutral-500 text-neutral-800 group-hover:border-orange group-hover:text-orange transition-colors duration-300"
+                className="text-sm font-light px-4 py-1.5 rounded-full border border-neutral-500 text-neutral-800 group-hover:border-orange transition-colors duration-300"
               >
                 {post.category}
               </span>

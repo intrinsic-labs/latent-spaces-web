@@ -5,7 +5,8 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useForm as useFormspree } from '@formspree/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useTheme } from '@/components/ThemeProvider';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name is required'),
@@ -16,8 +17,16 @@ const contactSchema = z.object({
 type ContactFormValues = z.infer<typeof contactSchema>;
 
 export default function ContactPage() {
-  const [formState, submitForm] = useFormspree('YOUR_FORMSPREE_ID');
+  const { setDarkTheme } = useTheme();
+  const [formState, submitForm] = useFormspree('xanepjnp');
   const [submitted, setSubmitted] = useState(false);
+
+  // Set dark theme when component mounts
+  useEffect(() => {
+    setDarkTheme(true);
+    // Clean up function to reset theme when navigating away
+    return () => setDarkTheme(false);
+  }, [setDarkTheme]);
   
   const { 
     register, 
@@ -36,13 +45,13 @@ export default function ContactPage() {
 
   return (
     <motion.main
-      className="min-h-screen bg-background text-primary relative py-32" 
+      className="min-h-screen bg-ls-background text-white relative py-32" 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
       <div className="container-custom">
-        <h1 className="text-4xl md:text-5xl font-display font-medium mb-12 text-center">Contact Us</h1>
+        <h1 className="text-4xl md:text-5xl font-display font-medium mb-12 text-center">Get In Touch</h1>
         
         <div className="max-w-lg mx-auto">
           {submitted ? (
@@ -70,7 +79,7 @@ export default function ContactPage() {
                   id="name"
                   type="text"
                   {...register('name')}
-                  className="w-full p-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full p-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-ls-accent"
                   placeholder="Your name"
                 />
                 {errors.name && (
@@ -86,7 +95,7 @@ export default function ContactPage() {
                   id="email"
                   type="email"
                   {...register('email')}
-                  className="w-full p-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full p-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-ls-accent"
                   placeholder="your.email@example.com"
                 />
                 {errors.email && (
@@ -102,7 +111,7 @@ export default function ContactPage() {
                   id="message"
                   {...register('message')}
                   rows={6}
-                  className="w-full p-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full p-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-ls-accent"
                   placeholder="How can we help you?"
                 />
                 {errors.message && (
@@ -113,7 +122,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={isSubmitting || formState.submitting}
-                className="w-full py-3 bg-accent text-white rounded-lg hover:bg-accent-600 transition-colors disabled:opacity-70"
+                className="w-full py-3 bg-ls-accent text-white rounded-lg hover:bg-accent transition-colors disabled:opacity-70"
               >
                 {isSubmitting || formState.submitting ? 'Sending...' : 'Send Message'}
               </button>

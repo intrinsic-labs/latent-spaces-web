@@ -51,7 +51,7 @@ const Navigation = () => {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { name: 'App', href: '/' },
+    { name: 'Fundraiser', href: '/#fundraising' },
     { name: 'OpenLoom', href: '/openloom' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },

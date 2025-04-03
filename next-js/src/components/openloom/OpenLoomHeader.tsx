@@ -34,7 +34,7 @@ const OpenLoomHeader = ({ post }: OpenLoomHeaderProps) => {
             className="flex flex-wrap items-center gap-5 mb-10 justify-center"
           >
             
-            <div className="text-lg pt-2 font-calling-code text-neutral-300">
+            <div className="text-xl pt-2 font-calling-code text-neutral-300">
               A Protocol For Loom Interfaces
             </div>
           </motion.div>

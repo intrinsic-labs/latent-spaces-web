@@ -65,13 +65,13 @@ const config: Config = {
         },
         // Purple-leaning indigo accent color
         accent: {
-          DEFAULT: "#6C5CE7", // More purple-leaning indigo
+          DEFAULT: "#5c91e7", // More purple-leaning indigo
           50: "#F3F1FE",
           100: "#E4E0FD",
           200: "#C8C0FB",
           300: "#ACA0F9",
           400: "#8E7FF8",
-          500: "#6C5CE7", // Default
+          500: "#5c91e7", // Default
           600: "#5548D9",
           700: "#4035BE",
           800: "#312A93",

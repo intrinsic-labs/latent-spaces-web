@@ -32,7 +32,7 @@ const FeaturedPost = () => {
 
   if (isLoading) {
     return (
-      <section className="py-8 md:py-16 bg-background/30">
+      <section className="py-8 md:px-4 md:py-16 bg-background/30">
         <div className="container-custom">
           <div className="h-96 animate-pulse bg-neutral-800/50 rounded-xl"></div>
         </div>
@@ -45,7 +45,7 @@ const FeaturedPost = () => {
   }
 
   return (
-    <section className="py-8 md:py-16 bg-background/30">
+    <section className="py-8 md:px-4 md:py-16 bg-background/30">
       <div className="container-custom">
         {/* <motion.div
           initial={{ opacity: 0 }}

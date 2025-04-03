@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import OpenLoomHeader from '@/components/openloom/OpenLoomHeader';
 import OpenLoomContent from '@/components/openloom/OpenLoomContent';
-import { getBlogPost } from '@/lib/blog';
+import { getOpenLoomData } from '@/lib/openloom';
 import { useTheme } from '@/components/ThemeProvider';
 import { BlogPost } from '@/lib/blog';
 
@@ -23,7 +23,7 @@ export default function OpenLoomPage() {
   useEffect(() => {
     const loadPost = async () => {
       try {
-        const postData = await getBlogPost("openloom");
+        const postData = await getOpenLoomData();
         setPost(postData);
       } catch (error) {
         console.error("Failed to load OpenLoom post:", error);
