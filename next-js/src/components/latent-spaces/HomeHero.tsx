@@ -1,17 +1,10 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import PlaceholderImage from '@/components/ui/PlaceholderImage';
-import { BlogPost } from '@/lib/blog';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
-interface OpenLoomHeaderProps {
-  post: BlogPost;
-}
-
-const OpenLoomHeader = ({ post }: OpenLoomHeaderProps) => {
+const HomeHero = () => {
   const backgroundRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,7 +18,7 @@ const OpenLoomHeader = ({ post }: OpenLoomHeaderProps) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
+  
   return (
     <section className="relative pt-8 md:pt-12 lg:pt-16 overflow-hidden">
       <div ref={backgroundRef} className="absolute top-0 left-0 w-full h-full">
@@ -36,7 +29,7 @@ const OpenLoomHeader = ({ post }: OpenLoomHeaderProps) => {
           className="h-full w-full"
         >
           <Image 
-            src="/images/blog/005 Medium.jpeg" 
+            src="/images/latent-spaces/background.png" 
             alt="Latent Spaces background" 
             fill
             priority
@@ -45,7 +38,7 @@ const OpenLoomHeader = ({ post }: OpenLoomHeaderProps) => {
           />
         </motion.div>
       </div>
-
+      
       <div className="container-custom relative z-10">
         
         <div className="max-w-4xl mx-auto pt-16 text-center">
@@ -55,9 +48,9 @@ const OpenLoomHeader = ({ post }: OpenLoomHeaderProps) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="heading-xl mb-6 text-center"
+            className="heading-xl mb-6 text-center tracking-tight"
           >
-            OpenLoom
+            Latent Spaces
           </motion.h1>
           
           {/* Subtitle */}
@@ -68,23 +61,36 @@ const OpenLoomHeader = ({ post }: OpenLoomHeaderProps) => {
             className="flex flex-wrap items-center gap-5 mb-8 justify-center"
           >
             
-            <div className="text-xl pt-2 font-calling-code text-neutral-200 drop-shadow-md">
-              A Protocol For Loom Interfaces
+            <div className="text-xl pt-2 font-calling-code text-neutral-300">
+              A Loom Interface
             </div>
           </motion.div>
 
-          {/* Subtitle */}
           <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+        >
+          <a 
+            href="#fundraising" 
+            className="inline-block bg-ls-accent hover:bg-ls-accent/30 backdrop-blur-md border border-ls-accent hover:border-ls-accentLight text-white py-3 w-full max-w-[325px]md:max-w-[400px] font-calling-code text-[1.1rem] rounded-full cursor-pointer transition-all duration-300 text-center mb-10 max-w-xl"
+          >
+            Support the Beta
+          </a>
+        </motion.div>
+
+          {/* Subtitle */}
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-wrap items-center gap-5 mb-10 justify-center"
           >
             
-            <div className="text-md font-calling-code text-neutral-300 border border-neutral-400 rounded-full px-4 py-1 bg-neutral-300/10 backdrop-blur-md">
+            <div className="text-md font-calling-code text-neutral-300 border border-neutral-400 rounded-full px-4 py-1">
               Current Version: {post.id}
             </div>
-          </motion.div>
+          </motion.div> */}
           
           {/* Featured image */}
           {/* <motion.div
@@ -114,4 +120,4 @@ const OpenLoomHeader = ({ post }: OpenLoomHeaderProps) => {
   );
 };
 
-export default OpenLoomHeader; 
+export default HomeHero; 

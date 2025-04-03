@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import Hero from '../components/latent-spaces/Hero';
+import HomeHero from '../components/latent-spaces/HomeHero';
 import ContextSection from '../components/latent-spaces/ContextSection';
 import ProjectOverview from '../components/latent-spaces/ProjectOverview';
 import Fundraising from '../components/latent-spaces/Fundraising';
@@ -27,7 +28,7 @@ export default function LatentSpacesPage() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <Hero />
+      <HomeHero />
       <ContextSection />
       <ProjectOverview />
       <Fundraising />

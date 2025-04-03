@@ -53,6 +53,8 @@ export default function Hero() {
             className="w-full max-w-[325px] md:max-w-[400px] mx-auto mb-20"
           />
         </motion.div>
+
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
