@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { FaFacebookF, FaXTwitter, FaLinkedinIn } from 'react-icons/fa6';
+import CodeChip from '../latent-spaces/CodeChip';
 
 interface OpenLoomContentProps {
   post: BlogPost;
@@ -92,7 +93,7 @@ const OpenLoomContent = ({ post }: OpenLoomContentProps) => {
                   <li className="mb-2" {...props} />
                 ),
                 a: ({ node, ...props }: any) => (
-                  <a className="hover:text-primary/80 underline transition-colors duration-300" {...props} />
+                  <CodeChip {...props} />
                 ),
                 blockquote: ({ node, ...props }: any) => (
                   <blockquote className="border-l-4 border-primary/30 pl-4 italic my-6" {...props} />
@@ -108,7 +109,7 @@ const OpenLoomContent = ({ post }: OpenLoomContentProps) => {
           
           {/* Share */}
           <div className="mt-12">
-            <h3 className="text-md font-medium mb-4">Share OpenLoom</h3>
+            <h3 className="text-md font-medium mb-4">Share This Page</h3>
             <div className="flex space-x-4">
               <button 
                 onClick={() => {

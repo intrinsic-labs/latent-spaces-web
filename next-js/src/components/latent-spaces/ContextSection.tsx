@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import SectionTitle from '../ui/SectionTitle';
 import SectionContent from '../ui/SectionContent';
 import AccentText from './AccentText';
@@ -8,6 +8,8 @@ import CodeChip from './CodeChip';
 
 export default function ContextSection() {
   const parallaxBgRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,11 +21,23 @@ export default function ContextSection() {
           parallaxBgRef.current.style.transform = `translateY(${-sectionTop * scrollFactor}px)`;
         }
       }
+      
+      // Check if section is in viewport to trigger fade-in
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const isInViewport = rect.top <= window.innerHeight * 0.75;
+        if (isInViewport && !isVisible) {
+          setIsVisible(true);
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
+    // Initial check in case the section is already in viewport on load
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isVisible]);
 
   return (
     <section className="pb-12 pt-12 md:py-24 px-8 max-w-3xl mx-auto relative overflow-hidden" id="about">
@@ -32,11 +46,14 @@ export default function ContextSection() {
           ref={parallaxBgRef} 
           className="absolute top-0 left-0 w-full h-[120%] z-0 opacity-15"
         />
-        <div className="relative z-10">
+        <div 
+          ref={sectionRef}
+          className={`relative z-10 transition-opacity duration-1000 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+        >
           <SectionTitle>Understand model behavior. Don't assign it.</SectionTitle>
           <SectionContent>
             <p>
-              Latent Spaces is the first mobile app designed from the ground up as a Loom interface for language models, allowing you to see multiple possible continuations of the same prompt and explore any branch you choose.
+              Latent Spaces is the first mobile app designed from the ground up as a <CodeChip href="/blog/the-probable-beauty-of-llms">Loom interface</CodeChip> for language models, allowing you to see multiple possible continuations of the same prompt and explore any branch you choose.
             </p>
             <br />
             <p>

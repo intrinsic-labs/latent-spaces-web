@@ -20,7 +20,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center relative bg-ls-background overflow-hidden">
+    <section className="min-h-[60vh] flex flex-col justify-center items-center relative bg-ls-background overflow-hidden">
       <div ref={backgroundRef} className="absolute top-0 left-0 w-full h-full">
         <motion.div
           initial={{ opacity: 0 }}
@@ -38,7 +38,7 @@ export default function Hero() {
           />
         </motion.div>
       </div>
-      <div className="relative z-10 text-center max-w-[800px] px-8">
+      <div className="relative z-10 text-center max-w-[800px] px-8 pt-12">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

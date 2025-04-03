@@ -22,39 +22,40 @@ const subscriptionTiers = [
 
 // Features with funding status
 const iosFeatures = [
-  { id: 1, text: 'Address SwiftData-related performance issues', funded: true },
-  { id: 2, text: 'Upgrade node caching system', funded: true },
-  { id: 3, text: 'Add support for saving reusable system prompts', funded: true },
-  { id: 4, text: 'Add pinned/bookmarked trees', funded: false },
-  { id: 5, text: 'Add support for editing tree nodes', funded: false },
-  { id: 6, text: 'Add full markdown display support', funded: false },
-  { id: 7, text: 'Add image upload support (for applicable models)', funded: false },
-  { id: 8, text: 'Add document upload support (for applicable models)', funded: false },
-  { id: 9, text: 'Parse reasoning tokens for relevant models (e.g. DeepSeek R1)', funded: false },
-  { id: 10, text: 'Add support for user defined models that comply with OpenAI API schema', funded: false },
-  { id: 11, text: 'Add on-device audio transcription for hands-free beta voice mode', funded: false },
-  { id: 12, text: 'Implement functional MVP of LoomDisplay (text-to-ASCII animation system)', funded: false },
+  { id: 1, text: 'Address app architecture issues', funded: false },
+  { id: 2, text: 'Address SwiftData-related performance issues', funded: false },
+  { id: 3, text: 'Integrate Firebase for cloud backup and user authentication', funded: false },
+  { id: 4, text: 'Encrypt all message data via the Signal protocol', funded: false },
+  { id: 5, text: 'Upgrade node caching system', funded: false },
+  { id: 6, text: 'Add support for saving reusable system prompts', funded: false },
+  { id: 7, text: 'Add pinned/bookmarked trees', funded: false },
+  { id: 8, text: 'Add support for editing trees and nodes', funded: false },
+  { id: 9, text: 'Add full markdown display support', funded: false },
+  { id: 10, text: 'Add image upload support (for applicable models)', funded: false },
+  { id: 11, text: 'Add document upload support (for applicable models)', funded: false },
+  { id: 12, text: 'Parse reasoning tokens for relevant models (e.g. DeepSeek R1)', funded: false },
+  { id: 13, text: 'Add support for user defined models that comply with OpenAI API schema', funded: false },
+  { id: 14, text: 'Add on-device audio transcription for hands-free beta voice mode', funded: false },
+  { id: 15, text: 'Implement functional MVP of LoomDisplay (text-to-ASCII animation system)', funded: false },
+  { id: 16, text: 'Add Hyperbolic to model providers', funded: false },
+];
+
+const webFeatures = [
+  { id: 1, text: 'Replicate iOS app features in web app', funded: false },
+  { id: 2, text: 'Refine design and layout for desktop, tablet, and mobile', funded: false },
 ];
 
 const openLoomFeatures = [
-  { id: 1, text: 'Upgrade OpenLoom protocol from graph structure to hypergraph structure', funded: true },
+  { id: 1, text: 'Upgrade OpenLoom protocol architecture from graph to hypergraph (better handling of multi-modal trees)', funded: false },
   { id: 2, text: 'Upgrade node signing requirements to ensure accurate author attribution', funded: false },
   { id: 3, text: 'Add support for non-text node types (e.g. images, documents)', funded: false },
-];
-
-const websiteFeatures = [
-  { id: 1, text: 'Latent Spaces project overview', funded: true },
-  { id: 2, text: 'Loom interface introduction for new users', funded: true },
-  { id: 3, text: 'High level roadmap', funded: true },
-  { id: 4, text: 'Beta program information and signup', funded: true },
-  { id: 5, text: 'Social links', funded: true },
 ];
 
 export default function Fundraising() {
   const [animatedPercentage, setAnimatedPercentage] = useState(0);
   const [fundingData, setFundingData] = useState({
     current: 0,
-    goal: 100000,
+    goal: 9995,
     percentage: 0
   });
   const [showMonthlyOptions, setShowMonthlyOptions] = useState(false);
@@ -199,10 +200,13 @@ export default function Fundraising() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <SectionTitle>Feature Map</SectionTitle>
+              <SectionTitle>Feature List</SectionTitle>
+              <SectionContent>
+                The following features are planned for the public beta release. Featured will be marked completed as they are implemented, so stay tuned!
+              </SectionContent>
             </motion.div>
 
-            <div className="mb-20">
+            <div className="my-20">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -230,10 +234,10 @@ export default function Fundraising() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
-                <CodeChip size="large">OpenLoom Protocol Upgrades</CodeChip>
+                <CodeChip size="large">Web App Beta</CodeChip>
               </motion.div>
               <ul className="my-8">
-                {openLoomFeatures.map((feature, index) => (
+                {webFeatures.map((feature, index) => (
                   <FeatureItem
                     key={feature.id}
                     text={feature.text}
@@ -244,17 +248,17 @@ export default function Fundraising() {
               </ul>
             </div>
 
-            <div className="">
+            <div className="mb-20">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
-                <CodeChip size="large">Latent Spaces Website</CodeChip>
+                <CodeChip size="large">OpenLoom Protocol Upgrades</CodeChip>
               </motion.div>
               <ul className="my-8">
-                {websiteFeatures.map((feature, index) => (
+                {openLoomFeatures.map((feature, index) => (
                   <FeatureItem
                     key={feature.id}
                     text={feature.text}

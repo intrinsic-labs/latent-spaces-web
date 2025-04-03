@@ -31,11 +31,24 @@ const OpenLoomHeader = ({ post }: OpenLoomHeaderProps) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-wrap items-center gap-5 mb-10 justify-center"
+            className="flex flex-wrap items-center gap-5 mb-8 justify-center"
           >
             
             <div className="text-xl pt-2 font-calling-code text-neutral-300">
               A Protocol For Loom Interfaces
+            </div>
+          </motion.div>
+
+          {/* Subtitle */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-wrap items-center gap-5 mb-10 justify-center"
+          >
+            
+            <div className="text-md font-calling-code text-neutral-300 border border-neutral-400 rounded-full px-4 py-1">
+              Current Version: {post.id}
             </div>
           </motion.div>
           

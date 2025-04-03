@@ -36,7 +36,7 @@ export async function getFundingData() {
       .reduce((sum, donation) => sum + donation.amount, 0);
     
     // Define the funding goal
-    const goal = 12000;
+    const goal = 9995;
     
     // Calculate the percentage of the goal reached
     const percentage = (totalDonated / goal) * 100;
@@ -52,7 +52,7 @@ export async function getFundingData() {
     // Return default values if there's an error
     return {
       current: 0,
-      goal: 12000,
+      goal: 9995,
       percentage: 0
     };
   }

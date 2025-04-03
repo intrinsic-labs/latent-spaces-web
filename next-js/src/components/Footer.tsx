@@ -34,10 +34,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-black/90 pt-16 pb-16 relative">
+    <footer className="bg-black/90 pt-16 pb-16 md:px-8 relative">
       
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
           {/* Brand Column */}
           <div>
             {/* <Image 
@@ -85,38 +85,6 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-
-          {/* <div>
-            <h3 className="text-secondary text-md font-semibold mb-4 uppercase tracking-wider">Services</h3>
-            <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-neutral-600 hover:text-accent transition-colors text-md tracking-wide"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-secondary text-md font-semibold mb-4 uppercase tracking-wider">Resources</h3>
-            <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-neutral-600 hover:text-accent transition-colors text-md tracking-wide"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div> */}
         </div> 
 
         {/* Bottom Section */}

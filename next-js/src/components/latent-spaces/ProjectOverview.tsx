@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
+import Image from 'next/image';
 import SectionTitle from '../ui/SectionTitle';
 import SectionContent from '../ui/SectionContent';
 import AccentText from './AccentText';
@@ -33,27 +34,87 @@ export default function ProjectOverview() {
           className="absolute top-0 left-0 w-full h-[120%] z-0 opacity-15"
         />
         <div className="relative z-10">
-          <SectionTitle>Project Overview</SectionTitle>
+          <SectionTitle>Where we're at</SectionTitle>
           <SectionContent>
             <p>
-              <span className="font-cardo italic text-white">Latent Spaces</span> is the first mobile application specifically designed around the concept of a language model loom.
-              The app facilitates generation of N continuations to any prompt from any point in an exchange, and allows users to
-              traverse and curate all generated branches at will. Model providers <CodeChip>OpenRouter</CodeChip> and <CodeChip>Anthropic</CodeChip> are currently
-              implemented. The iOS beta is in the works, with Android beta next in line on the priority list.
+              Currently, Latent Spaces exists as a prototype iOS app. Model providers <CodeChip href="https://openrouter.ai/" target="_blank" rel="noopener noreferrer">OpenRouter</CodeChip> and <CodeChip href="https://www.anthropic.com/" target="_blank" rel="noopener noreferrer">Anthropic</CodeChip> are currently
+              implemented, giving users access to over 300 models. Next in line is a web version, and then an Android version.
             </p>
             <br />
+            <div className="grid grid-cols-3 gap-4 w-full">
+            <div className="relative aspect-[9/19.5]">
+                <Image
+                  src="/images/latent-spaces/screenshots/01.png"
+                  alt="Latent Spaces app screenshot"
+                  fill
+                  className="object-contain rounded-lg"
+                />
+              </div>
+              <div className="relative aspect-[9/19.5]">
+                <Image
+                  src="/images/latent-spaces/screenshots/05.png"
+                  alt="Latent Spaces app screenshot"
+                  fill
+                  className="object-contain rounded-lg"
+                />
+              </div>
+              <div className="relative aspect-[9/19.5]">
+                <Image
+                  src="/images/latent-spaces/screenshots/06.png"
+                  alt="Latent Spaces app screenshot"
+                  fill
+                  className="object-contain rounded-lg"
+                />
+              </div>
+            </div>
+            <br />
             <AccentText color="text-white">
-              This project proposal aims to get the iOS app ready for a public beta release.
+              The fundrasier aims to get the iOS app and web app ready for a public beta release.
             </AccentText>
             <br />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+              <div className="relative aspect-[9/19.5]">
+                <Image
+                  src="/images/latent-spaces/screenshots/03.png"
+                  alt="Latent Spaces app screenshot"
+                  fill
+                  className="object-contain rounded-lg"
+                />
+              </div>
+              <div className="relative aspect-[9/19.5]">
+                <Image
+                  src="/images/latent-spaces/screenshots/04.png"
+                  alt="Latent Spaces app screenshot"
+                  fill
+                  className="object-contain rounded-lg"
+                />
+              </div>
+              <div className="relative aspect-[9/19.5]">
+                <Image
+                  src="/images/latent-spaces/screenshots/07.png"
+                  alt="Latent Spaces app screenshot"
+                  fill
+                  className="object-contain rounded-lg"
+                />
+              </div>
+              <div className="relative aspect-[9/19.5]">
+                <Image
+                  src="/images/latent-spaces/screenshots/08.png"
+                  alt="Latent Spaces app screenshot"
+                  fill
+                  className="object-contain rounded-lg"
+                />
+              </div>
+            </div>
+            <br />
             <p>
-              Alongside the mobile app, Intrinsic Labs is developing a protocol called <CodeChip>OpenLoom</CodeChip> that other loom interfaces may
+              Alongside the mobile app, Intrinsic Labs is developing a protocol called <CodeChip href="/openloom">OpenLoom</CodeChip> that other loom interfaces may
               adopt to import/export trees in a standardized lossless format. Latent Spaces supports tree sharing via the
               OpenLoom format out of the box.
             </p>
             <br />
             <AccentText color="text-white">
-              This project proposal also aims to get OpenLoom V1.0 ready for publication.
+              The fundrasier also aims to get to a stable OpenLoom V1.0.
             </AccentText>
           </SectionContent>
         </div>
