@@ -22,28 +22,41 @@ export default function Hero() {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center relative bg-ls-background overflow-hidden">
       <div ref={backgroundRef} className="absolute top-0 left-0 w-full h-full">
-        <Image 
-          src="/images/latent-spaces/background.png" 
-          alt="Latent Spaces background" 
-          fill
-          priority
-          quality={100}
-          className="opacity-80 z-0 object-cover"
-        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.8 }}
+          transition={{ duration: 1 }}
+          className="h-full w-full"
+        >
+          <Image 
+            src="/images/latent-spaces/background.png" 
+            alt="Latent Spaces background" 
+            fill
+            priority
+            quality={100}
+            className="z-0 object-cover"
+          />
+        </motion.div>
       </div>
       <div className="relative z-10 text-center max-w-[800px] px-8">
-        <Image 
-          src="/images/latent-spaces/logo-with-tagline.svg" 
-          alt="Latent Spaces: A Loom Interface" 
-          width={400} 
-          height={200}
-          priority
-          className="w-full max-w-[325px] md:max-w-[400px] mx-auto mb-20"
-        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <Image 
+            src="/images/latent-spaces/logo-with-tagline.svg" 
+            alt="Latent Spaces: A Loom Interface" 
+            width={400} 
+            height={200}
+            priority
+            className="w-full max-w-[325px] md:max-w-[400px] mx-auto mb-20"
+          />
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
         >
           <a 
             href="#fundraising" 
