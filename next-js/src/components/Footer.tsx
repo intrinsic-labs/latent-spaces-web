@@ -10,7 +10,7 @@ const Footer = () => {
 
   const footerLinks = {
     company: [
-      { name: 'App', href: '/app' },
+      { name: 'Fundraiser', href: '/#fundraising' },
       { name: 'OpenLoom', href: '/openloom' },
       { name: 'Blog', href: '/blog' },
       { name: 'Contact', href: '/contact' },
