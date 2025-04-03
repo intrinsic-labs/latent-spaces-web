@@ -39,7 +39,7 @@ export default function ContextSection() {
   }, [isVisible]);
 
   return (
-    <section className="pb-12 pt-12 md:py-24 px-8 max-w-3xl mx-auto relative overflow-hidden" id="about">
+    <section className="pb-6 pt-12 px-8 max-w-3xl mx-auto relative overflow-hidden" id="about">
       <div className="relative overflow-hidden">
         <div 
           ref={parallaxBgRef} 

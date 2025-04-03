@@ -27,7 +27,7 @@ export default function ProjectOverview() {
   }, []);
 
   return (
-    <section className="py-24 px-8 max-w-3xl mx-auto relative overflow-hidden">
+    <section className="py-12 px-8 max-w-3xl mx-auto relative overflow-hidden">
       <div className="relative overflow-hidden">
         <div 
           ref={parallaxBgRef} 

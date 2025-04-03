@@ -94,7 +94,7 @@ export default function Fundraising() {
   }, []);
 
   return (
-    <section className="py-24 px-4 max-w-5xl mx-auto relative overflow-hidden" id="fundraising">
+    <section className="px-4 max-w-5xl mx-auto relative overflow-hidden" id="fundraising">
       <div className="relative overflow-hidden">
         <div
           ref={parallaxBgRef}
@@ -211,7 +211,7 @@ export default function Fundraising() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
+                transition={{ duration: 0.5 }}
               >
                 <CodeChip size="large">iOS App Improvements</CodeChip>
               </motion.div>
@@ -232,7 +232,7 @@ export default function Fundraising() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
+                transition={{ duration: 0.5 }}
               >
                 <CodeChip size="large">Web App Beta</CodeChip>
               </motion.div>
@@ -253,7 +253,7 @@ export default function Fundraising() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
+                transition={{ duration: 0.5 }}
               >
                 <CodeChip size="large">OpenLoom Protocol Upgrades</CodeChip>
               </motion.div>
