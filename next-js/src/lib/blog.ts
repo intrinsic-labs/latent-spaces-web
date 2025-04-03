@@ -1,3 +1,8 @@
+import { client } from "@/sanity/client";
+import { SanityDocument } from "@sanity/client";
+import { urlForImage } from "@/sanity/image";
+import { type SanityDocument as NextSanityDocument } from "next-sanity";
+
 // Types for blog data
 export interface BlogPost {
   id: string;
@@ -724,108 +729,495 @@ In future articles, we'll explore specific aspects of microservices architecture
 
 // Get all blog posts
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
-  // In a real implementation, this would fetch from Supabase
-  return blogPosts;
+  const POSTS_QUERY = `*[
+    _type == "post"
+    && defined(slug.current)
+  ]|order(publishedAt desc){
+    _id,
+    title,
+    excerpt,
+    content,
+    "slug": slug.current,
+    coverImage,
+    "author": {
+      "name": author->name,
+      "avatar": author->avatar
+    },
+    publishedAt,
+    readingTime,
+    category,
+    tags,
+    featured
+  }`;
+
+  const options = { next: { revalidate: 30 } };
+  
+  const sanityPosts = await client.fetch<NextSanityDocument[]>(POSTS_QUERY, {}, options);
+  
+  // Transform Sanity documents to our BlogPost type
+  const posts: BlogPost[] = sanityPosts.map(post => ({
+    id: post._id,
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    content: post.content,
+    coverImage: urlForImage(post.coverImage) ?? '',
+    author: {
+      name: post.author.name,
+      avatar: urlForImage(post.author.avatar) ?? ''
+    },
+    date: new Date(post.publishedAt).toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    }),
+    readingTime: post.readingTime || `${Math.ceil(post.content.length / 1000)} min read`,
+    category: post.category,
+    tags: post.tags,
+    featured: post.featured || false
+  }));
+  
+  return posts;
 }
 
 // Get featured blog posts
 export async function getFeaturedBlogPosts(): Promise<BlogPost[]> {
-  // In a real implementation, this would fetch from Supabase
-  return blogPosts.filter(post => post.featured);
+  const FEATURED_POSTS_QUERY = `*[
+    _type == "post"
+    && defined(slug.current)
+    && featured == true
+  ]|order(publishedAt desc){
+    _id,
+    title,
+    excerpt,
+    content,
+    "slug": slug.current,
+    coverImage,
+    "author": {
+      "name": author->name,
+      "avatar": author->avatar
+    },
+    publishedAt,
+    readingTime,
+    category,
+    tags,
+    featured
+  }`;
+
+  const options = { next: { revalidate: 30 } };
+  
+  const sanityPosts = await client.fetch<NextSanityDocument[]>(FEATURED_POSTS_QUERY, {}, options);
+  
+  // Transform Sanity documents to our BlogPost type
+  const posts: BlogPost[] = sanityPosts.map(post => ({
+    id: post._id,
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    content: post.content,
+    coverImage: urlForImage(post.coverImage) ?? '',
+    author: {
+      name: post.author.name,
+      avatar: urlForImage(post.author.avatar) ?? ''
+    },
+    date: new Date(post.publishedAt).toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    }),
+    readingTime: post.readingTime || `${Math.ceil(post.content.length / 1000)} min read`,
+    category: post.category,
+    tags: post.tags,
+    featured: post.featured || false
+  }));
+  
+  return posts;
 }
 
 // Get a single blog post by slug
 export async function getBlogPost(slug: string): Promise<BlogPost> {
-  // In a real implementation, this would fetch from Supabase
-  const post = blogPosts.find(post => post.slug === slug);
+  const SINGLE_POST_QUERY = `*[
+    _type == "post"
+    && slug.current == $slug
+  ][0]{
+    _id,
+    title,
+    excerpt,
+    content,
+    "slug": slug.current,
+    coverImage,
+    "author": {
+      "name": author->name,
+      "avatar": author->avatar
+    },
+    publishedAt,
+    readingTime,
+    category,
+    tags,
+    featured
+  }`;
+
+  const options = { next: { revalidate: 30 } };
+  
+  const post = await client.fetch<NextSanityDocument>(SINGLE_POST_QUERY, { slug }, options);
   
   if (!post) {
     throw new Error(`Blog post with slug "${slug}" not found`);
   }
   
-  return post;
+  return {
+    id: post._id,
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    content: post.content,
+    coverImage: urlForImage(post.coverImage) ?? '',
+    author: {
+      name: post.author.name,
+      avatar: urlForImage(post.author.avatar) ?? ''
+    },
+    date: new Date(post.publishedAt).toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    }),
+    readingTime: post.readingTime || `${Math.ceil(post.content.length / 1000)} min read`,
+    category: post.category,
+    tags: post.tags,
+    featured: post.featured || false
+  };
 }
 
 // Get related blog posts
 export async function getRelatedPosts(slug: string, limit: number = 3): Promise<BlogPost[]> {
-  // In a real implementation, this would fetch from Supabase based on categories or tags
   const currentPost = await getBlogPost(slug);
   
-  // Get posts with matching categories or tags, excluding the current post
-  const relatedPosts = blogPosts
-    .filter(post => post.slug !== slug)
-    .filter(post => {
-      const hasMatchingCategory = post.category === currentPost.category;
-      const hasMatchingTag = post.tags.some(tag => 
-        currentPost.tags.includes(tag)
-      );
-      
-      return hasMatchingCategory || hasMatchingTag;
-    })
-    .slice(0, limit);
+  // Create a query for related posts by category or matching tags
+  const RELATED_POSTS_QUERY = `*[
+    _type == "post"
+    && slug.current != $slug
+    && (category == $category || count((tags)[@ in $tags]) > 0)
+  ]|order(publishedAt desc)[0...3]{
+    _id,
+    title,
+    excerpt,
+    content,
+    "slug": slug.current,
+    coverImage,
+    "author": {
+      "name": author->name,
+      "avatar": author->avatar
+    },
+    publishedAt,
+    readingTime,
+    category,
+    tags,
+    featured
+  }`;
+
+  const options = { next: { revalidate: 30 } };
+  
+  const relatedPosts = await client.fetch<NextSanityDocument[]>(
+    RELATED_POSTS_QUERY, 
+    { 
+      slug: slug,
+      category: currentPost.category, 
+      tags: currentPost.tags
+    }, 
+    options
+  );
+  
+  // Transform Sanity documents to our BlogPost type
+  const posts: BlogPost[] = relatedPosts.map(post => ({
+    id: post._id,
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    content: post.content,
+    coverImage: urlForImage(post.coverImage) ?? '',
+    author: {
+      name: post.author.name,
+      avatar: urlForImage(post.author.avatar) ?? ''
+    },
+    date: new Date(post.publishedAt).toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    }),
+    readingTime: post.readingTime || `${Math.ceil(post.content.length / 1000)} min read`,
+    category: post.category,
+    tags: post.tags,
+    featured: post.featured || false
+  }));
   
   // If we don't have enough related posts, add recent posts
-  if (relatedPosts.length < limit) {
-    const recentPosts = blogPosts
-      .filter(post => post.slug !== slug && !relatedPosts.includes(post))
-      .slice(0, limit - relatedPosts.length);
+  if (posts.length < limit) {
+    // Get the IDs of posts we already have
+    const existingIds = posts.map(post => post.id);
     
-    return [...relatedPosts, ...recentPosts];
+    // For remaining count, use a hardcoded limit
+    // This isn't ideal but avoids template literal issues
+    const RECENT_POSTS_QUERY = `*[
+      _type == "post"
+      && slug.current != $slug
+      && !(_id in $existingIds)
+    ]|order(publishedAt desc)[0...3]{
+      _id,
+      title,
+      excerpt,
+      content,
+      "slug": slug.current,
+      coverImage,
+      "author": {
+        "name": author->name,
+        "avatar": author->avatar
+      },
+      publishedAt,
+      readingTime,
+      category,
+      tags,
+      featured
+    }`;
+    
+    const recentPosts = await client.fetch<NextSanityDocument[]>(
+      RECENT_POSTS_QUERY, 
+      { 
+        slug: slug,
+        existingIds: existingIds
+      }, 
+      options
+    );
+    
+    const recentPostsMapped = recentPosts.map(post => ({
+      id: post._id,
+      slug: post.slug,
+      title: post.title,
+      excerpt: post.excerpt,
+      content: post.content,
+      coverImage: urlForImage(post.coverImage) ?? '',
+      author: {
+        name: post.author.name,
+        avatar: urlForImage(post.author.avatar) ?? ''
+      },
+      date: new Date(post.publishedAt).toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      }),
+      readingTime: post.readingTime || `${Math.ceil(post.content.length / 1000)} min read`,
+      category: post.category,
+      tags: post.tags,
+      featured: post.featured || false
+    }));
+    
+    // Only take what we need to reach the limit
+    return [...posts, ...recentPostsMapped.slice(0, limit - posts.length)];
   }
   
-  return relatedPosts;
+  // Slice to ensure we only return the requested number
+  return posts.slice(0, limit);
 }
 
 // Get blog posts by category
 export async function getBlogPostsByCategory(category: string): Promise<BlogPost[]> {
-  // In a real implementation, this would fetch from Supabase
-  return blogPosts.filter(post => post.category === category);
+  const CATEGORY_POSTS_QUERY = `*[
+    _type == "post"
+    && defined(slug.current)
+    && category == $category
+  ]|order(publishedAt desc){
+    _id,
+    title,
+    excerpt,
+    content,
+    "slug": slug.current,
+    coverImage,
+    "author": {
+      "name": author->name,
+      "avatar": author->avatar
+    },
+    publishedAt,
+    readingTime,
+    category,
+    tags,
+    featured
+  }`;
+
+  const options = { next: { revalidate: 30 } };
+  
+  const sanityPosts = await client.fetch<NextSanityDocument[]>(CATEGORY_POSTS_QUERY, { category }, options);
+  
+  // Transform Sanity documents to our BlogPost type
+  const posts: BlogPost[] = sanityPosts.map(post => ({
+    id: post._id,
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    content: post.content,
+    coverImage: urlForImage(post.coverImage) ?? '',
+    author: {
+      name: post.author.name,
+      avatar: urlForImage(post.author.avatar) ?? ''
+    },
+    date: new Date(post.publishedAt).toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    }),
+    readingTime: post.readingTime || `${Math.ceil(post.content.length / 1000)} min read`,
+    category: post.category,
+    tags: post.tags,
+    featured: post.featured || false
+  }));
+  
+  return posts;
 }
 
 // Get blog posts by tag
 export async function getBlogPostsByTag(tag: string): Promise<BlogPost[]> {
-  // In a real implementation, this would fetch from Supabase
-  return blogPosts.filter(post => post.tags.includes(tag));
+  const TAG_POSTS_QUERY = `*[
+    _type == "post"
+    && defined(slug.current)
+    && $tagName in tags
+  ]|order(publishedAt desc){
+    _id,
+    title,
+    excerpt,
+    content,
+    "slug": slug.current,
+    coverImage,
+    "author": {
+      "name": author->name,
+      "avatar": author->avatar
+    },
+    publishedAt,
+    readingTime,
+    category,
+    tags,
+    featured
+  }`;
+
+  const options = { next: { revalidate: 30 } };
+  
+  const sanityPosts = await client.fetch<NextSanityDocument[]>(
+    TAG_POSTS_QUERY, 
+    { tagName: tag },
+    options
+  );
+  
+  // Transform Sanity documents to our BlogPost type
+  const posts: BlogPost[] = sanityPosts.map(post => ({
+    id: post._id,
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    content: post.content,
+    coverImage: urlForImage(post.coverImage) ?? '',
+    author: {
+      name: post.author.name,
+      avatar: urlForImage(post.author.avatar) ?? ''
+    },
+    date: new Date(post.publishedAt).toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    }),
+    readingTime: post.readingTime || `${Math.ceil(post.content.length / 1000)} min read`,
+    category: post.category,
+    tags: post.tags,
+    featured: post.featured || false
+  }));
+  
+  return posts;
 }
 
 // Get all categories
 export async function getAllCategories(): Promise<string[]> {
-  // In a real implementation, this would fetch from Supabase
-  const categories = new Set<string>();
+  const CATEGORIES_QUERY = `array::unique(*[
+    _type == "post" 
+    && defined(category)
+  ].category)`;
+
+  const options = { next: { revalidate: 30 } };
   
-  blogPosts.forEach(post => {
-    categories.add(post.category);
-  });
-  
-  return Array.from(categories);
+  const categories = await client.fetch<string[]>(CATEGORIES_QUERY, {}, options);
+  return categories;
 }
 
 // Get all tags
 export async function getAllTags(): Promise<string[]> {
-  // In a real implementation, this would fetch from Supabase
-  const tags = new Set<string>();
+  const TAGS_QUERY = `array::unique(*[
+    _type == "post" 
+    && defined(tags)
+  ].tags[])`; 
+
+  const options = { next: { revalidate: 30 } };
   
-  blogPosts.forEach(post => {
-    post.tags.forEach(tag => {
-      tags.add(tag);
-    });
-  });
-  
-  return Array.from(tags);
+  const tags = await client.fetch<string[]>(TAGS_QUERY, {}, options);
+  return tags;
 }
 
 // Search blog posts
 export async function searchBlogPosts(query: string): Promise<BlogPost[]> {
-  // In a real implementation, this would use Supabase full-text search
-  const lowercaseQuery = query.toLowerCase();
+  // Create a GROQ query with proper parameter usage
+  const SEARCH_QUERY = `*[
+    _type == "post"
+    && defined(slug.current)
+    && (
+      title match $searchPattern ||
+      excerpt match $searchPattern ||
+      content match $searchPattern ||
+      category match $searchPattern
+    )
+  ]|order(publishedAt desc){
+    _id,
+    title,
+    excerpt,
+    content,
+    "slug": slug.current,
+    coverImage,
+    "author": {
+      "name": author->name,
+      "avatar": author->avatar
+    },
+    publishedAt,
+    readingTime,
+    category,
+    tags,
+    featured
+  }`;
+
+  const options = { next: { revalidate: 30 } };
+  const searchPattern = `*${query.toLowerCase()}*`;
   
-  return blogPosts.filter(post => {
-    return (
-      post.title.toLowerCase().includes(lowercaseQuery) ||
-      post.excerpt.toLowerCase().includes(lowercaseQuery) ||
-      post.content.toLowerCase().includes(lowercaseQuery) ||
-      post.category.toLowerCase().includes(lowercaseQuery) ||
-      post.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))
-    );
-  });
+  // Pass the parameters as an object
+  const sanityPosts = await client.fetch<NextSanityDocument[]>(
+    SEARCH_QUERY, 
+    { searchPattern }, 
+    options
+  );
+  
+  // Transform Sanity documents to our BlogPost type
+  const posts: BlogPost[] = sanityPosts.map(post => ({
+    id: post._id,
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    content: post.content,
+    coverImage: urlForImage(post.coverImage) ?? '',
+    author: {
+      name: post.author.name,
+      avatar: urlForImage(post.author.avatar) ?? ''
+    },
+    date: new Date(post.publishedAt).toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    }),
+    readingTime: post.readingTime || `${Math.ceil(post.content.length / 1000)} min read`,
+    category: post.category,
+    tags: post.tags,
+    featured: post.featured || false
+  }));
+  
+  return posts;
 } 

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import PlaceholderImage from '@/components/ui/PlaceholderImage';
-import { BlogPost, getFeaturedBlogPosts } from '@/lib/blog';
+import { BlogPost } from '@/lib/blog';
 
 const FeaturedPost = () => {
   const [featuredPost, setFeaturedPost] = useState<BlogPost | null>(null);
@@ -13,7 +13,12 @@ const FeaturedPost = () => {
   useEffect(() => {
     const loadFeaturedPost = async () => {
       try {
-        const posts = await getFeaturedBlogPosts();
+        const response = await fetch('/api/blog?action=getFeaturedPosts');
+        if (!response.ok) {
+          throw new Error('Failed to fetch featured post');
+        }
+        
+        const posts = await response.json();
         setFeaturedPost(posts[0] || null);
       } catch (error) {
         console.error('Error loading featured post:', error);

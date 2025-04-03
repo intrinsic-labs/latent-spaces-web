@@ -50,7 +50,10 @@ const BlogPostHeader = ({ post }: BlogPostHeaderProps) => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-wrap items-center gap-5 mb-10 justify-center"
           >
-            
+            <div className="text-sm text-neutral-800">
+              {post.author.name}
+            </div>
+            <span className="text-neutral-400">|</span>
             <div className="text-sm text-neutral-800">
               {post.date}
             </div>

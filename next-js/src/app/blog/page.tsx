@@ -1,31 +1,16 @@
-'use client';
+import { type SanityDocument } from "next-sanity";
+import { client } from "@/sanity/client";
+import BlogPageContent from '@/components/blog/BlogPageContent';
 
-import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-import BlogHero from '../../components/blog/BlogHero';
-import BlogPosts from '../../components/blog/BlogPosts';
-import FeaturedPost from '@/components/blog/FeaturedPost';
-import { useTheme } from '../../components/ThemeProvider';
+const POSTS_QUERY = `*[
+  _type == "post"
+  && defined(slug.current)
+]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt, coverImage}`;
 
-export default function BlogPage() {
-  const { setDarkTheme } = useTheme();
+const options = { next: { revalidate: 30 } };
 
-  // Set light theme when component mounts
-  useEffect(() => {
-    setDarkTheme(false);
-    // No need for cleanup as default is already false
-  }, [setDarkTheme]);
+export default async function BlogPage() {
+  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
 
-  return (
-    <motion.main
-      className="min-h-screen bg-background text-primary relative" 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <BlogHero />
-      <FeaturedPost />
-      <BlogPosts />
-    </motion.main>
-  );
+  return <BlogPageContent posts={posts} />;
 } 

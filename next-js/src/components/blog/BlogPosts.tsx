@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { BlogPost, getAllBlogPosts, getAllCategories, getAllTags } from '@/lib/blog';
+import { BlogPost } from '@/lib/blog';
 import BlogSearch from './BlogSearch';
 
 const BlogPosts = () => {
@@ -20,16 +20,47 @@ const BlogPosts = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const allPosts = await getAllBlogPosts();
-        const allCategories = await getAllCategories();
-        const allTags = await getAllTags();
+        const response = await fetch('/api/blog?action=getPosts');
+        if (!response.ok) {
+          throw new Error('Failed to fetch blog data');
+        }
         
-        setPosts(allPosts);
-        setFilteredPosts(allPosts);
-        setCategories(allCategories);
-        setTags(allTags);
+        const data = await response.json();
+        
+        // Check if data is an array or has posts property
+        const postsData = Array.isArray(data) ? data : (Array.isArray(data.posts) ? data.posts : []);
+        
+        // Fetch categories and tags separately if needed
+        let categoriesData: string[] = [];
+        let tagsData: string[] = [];
+        
+        try {
+          const categoriesResponse = await fetch('/api/blog?action=getCategories');
+          if (categoriesResponse.ok) {
+            const categoriesResult = await categoriesResponse.json();
+            categoriesData = Array.isArray(categoriesResult) ? categoriesResult : [];
+          }
+          
+          const tagsResponse = await fetch('/api/blog?action=getTags');
+          if (tagsResponse.ok) {
+            const tagsResult = await tagsResponse.json();
+            tagsData = Array.isArray(tagsResult) ? tagsResult : [];
+          }
+        } catch (error) {
+          console.error('Error loading categories or tags:', error);
+        }
+        
+        setPosts(postsData);
+        setFilteredPosts(postsData);
+        setCategories(categoriesData);
+        setTags(tagsData);
       } catch (error) {
         console.error('Error loading blog data:', error);
+        // Initialize with empty arrays in case of error
+        setPosts([]);
+        setFilteredPosts([]);
+        setCategories([]);
+        setTags([]);
       } finally {
         setIsLoading(false);
       }
@@ -47,7 +78,7 @@ const BlogPosts = () => {
     }
     
     if (activeTag) {
-      filtered = filtered.filter(post => post.tags.includes(activeTag));
+      filtered = filtered.filter(post => post.tags && post.tags.includes(activeTag));
     }
     
     if (searchQuery) {
@@ -56,7 +87,7 @@ const BlogPosts = () => {
         post.title.toLowerCase().includes(query) || 
         post.excerpt.toLowerCase().includes(query) ||
         post.category.toLowerCase().includes(query) ||
-        post.tags.some(tag => tag.toLowerCase().includes(query))
+        (post.tags && post.tags.some(tag => tag.toLowerCase().includes(query)))
       );
     }
     
@@ -199,7 +230,7 @@ const BlogPosts = () => {
         )}
         
         {/* Results info */}
-        {(activeCategory || activeTag || searchQuery) && (
+        {(activeCategory || activeTag || searchQuery) && filteredPosts && (
           <div className="mb-6 md:mb-8 text-sm text-neutral-800">
             Showing {filteredPosts.length} {filteredPosts.length === 1 ? 'result' : 'results'}
             {activeCategory && <span> in <span className="text-primary">{activeCategory}</span></span>}
@@ -209,7 +240,7 @@ const BlogPosts = () => {
         )}
         
         {/* Blog posts list */}
-        {filteredPosts.length > 0 ? (
+        {filteredPosts && filteredPosts.length > 0 ? (
           <div className="space-y-6">
             {filteredPosts.map((post, index) => (
               <BlogPostItem key={post.id} post={post} index={index} totalCount={filteredPosts.length} />
