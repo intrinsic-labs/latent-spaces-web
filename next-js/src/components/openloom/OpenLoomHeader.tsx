@@ -41,7 +41,7 @@ const OpenLoomHeader = ({ post }: OpenLoomHeaderProps) => {
             fill
             priority
             quality={100}
-            className="z-0 object-cover"
+            className="z-0 object-cover opacity-50"
           />
         </motion.div>
       </div>

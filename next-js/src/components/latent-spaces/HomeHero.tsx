@@ -38,7 +38,7 @@ const HomeHero = () => {
           />
         </motion.div>
       </div>
-      
+
       <div className="container-custom relative z-10">
         
         <div className="max-w-4xl mx-auto pt-16 text-center">
@@ -47,7 +47,7 @@ const HomeHero = () => {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
             className="heading-xl mb-6 text-center tracking-tight"
           >
             Latent Spaces
@@ -57,7 +57,7 @@ const HomeHero = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.08 }}
             className="flex flex-wrap items-center gap-5 mb-8 justify-center"
           >
             
@@ -69,7 +69,7 @@ const HomeHero = () => {
           <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
+          transition={{ delay: 0.1, duration: 0.5 }}
         >
           <a 
             href="#fundraising" 
