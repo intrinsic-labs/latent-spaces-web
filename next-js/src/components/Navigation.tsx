@@ -87,7 +87,7 @@ const Navigation = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3 }}
-            className="text-xl font-cardo overflow-hidden relative pl-2"
+            className="text-xl font-neue-montreal font-bold overflow-hidden relative pl-2"
           >
             <AnimatePresence mode="wait">
               {isScrolled ? (
@@ -110,7 +110,7 @@ const Navigation = () => {
                   transition={{ duration: 0.2 }}
                   className="flex items-center"
                 >
-                  LATENT SPACES
+                  Latent Spaces
                 </motion.span>
               )}
             </AnimatePresence>

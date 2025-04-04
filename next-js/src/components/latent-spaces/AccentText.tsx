@@ -7,7 +7,7 @@ interface AccentTextProps {
 
 export default function AccentText({ children, color = 'text-ls-accentLight' }: AccentTextProps) {
  return (
-    <p className={`bold text-[2.2rem] leading-[1.2] ${color}`}>
+    <p className={`font-neue-montreal font-medium text-[2rem] leading-[1.2] ${color}`}>
       {children}
     </p>
   );

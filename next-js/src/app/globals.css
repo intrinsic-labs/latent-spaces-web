@@ -119,6 +119,71 @@
   font-display: swap;
 }
 
+/* Neue Montreal Font */
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/neue_montreal/NeueMontreal-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/neue_montreal/NeueMontreal-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/neue_montreal/NeueMontreal-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/neue_montreal/NeueMontreal-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/neue_montreal/NeueMontreal-Italic.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/neue_montreal/NeueMontreal-BoldItalic.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/neue_montreal/NeueMontreal-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/neue_montreal/NeueMontreal-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   /* Using hex codes for colors - black/white with purple accent */
   --foreground: #21201f; /* Very dark grey almost black */
@@ -233,8 +298,9 @@ body {
 }
 
 .heading-xl {
-  font-family: 'Cardo', sans-serif;
-  font-weight: bold; /* Medium weight */
+  font-family: 'Neue Montreal', sans-serif;
+  font-weight: bold;
+   /* Medium weight */
   font-size: 3.75rem; /* text-4xl */
   line-height: 3.5rem;
   color: var(--primary); 
@@ -256,7 +322,7 @@ body {
 }
 
 .heading-lg {
-  font-family: 'Cardo', serif;
+  font-family: 'Neue Montreal', sans-serif;
   font-weight: bold; /* Medium weight */
   font-size: 2.75rem; /* text-3xl */
   line-height: 3rem;
@@ -272,7 +338,7 @@ body {
 }
 
 .heading-md {
-  font-family: 'Cardo', serif;
+  font-family: 'Neue Montreal', sans-serif;
   font-weight: bold; /* Medium weight */
   font-size: 2.25rem; /* text-2xl */
   line-height: 2rem;
@@ -288,7 +354,7 @@ body {
 }
 
 .heading-sm {
-  font-family: 'Cardo', serif;
+  font-family: 'Neue Montreal', sans-serif;
   font-weight: bold; /* Medium weight */
   font-size: 1.5rem; /* text-xl */
   line-height: 1.75rem;

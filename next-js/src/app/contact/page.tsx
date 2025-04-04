@@ -51,7 +51,7 @@ export default function ContactPage() {
       transition={{ duration: 0.5 }}
     >
       <div className="container-custom">
-        <h1 className="text-4xl md:text-5xl font-display font-medium mb-12 text-center">Get In Touch</h1>
+        <h1 className="heading-lg font-medium mb-12 text-center">Get In Touch</h1>
         
         <div className="max-w-lg mx-auto">
           {submitted ? (
@@ -60,7 +60,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-center p-8 bg-accent/10 rounded-2xl"
             >
-              <h3 className="text-2xl font-medium mb-4">Thank you!</h3>
+              <h3 className="text-2xl font-neue-montreal font-medium mb-4">Thank you!</h3>
               <p className="mb-6">Your message has been sent. We'll get back to you as soon as possible.</p>
               <button 
                 onClick={() => setSubmitted(false)}

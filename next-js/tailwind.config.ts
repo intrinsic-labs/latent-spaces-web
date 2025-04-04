@@ -113,6 +113,7 @@ const config: Config = {
         cardo: ["Cardo", "serif"], // Cardo font
         "calling-code": ["Calling Code", "monospace"], // Calling Code font
         arial: ["Arial", "sans-serif"], // Arial font
+        "neue-montreal": ["Neue Montreal", "sans-serif"], // Neue Montreal font
       },
       fontWeight: {
         thin: '100',

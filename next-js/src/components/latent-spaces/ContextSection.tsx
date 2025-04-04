@@ -49,7 +49,7 @@ export default function ContextSection() {
           ref={sectionRef}
           className={`relative z-10 transition-opacity duration-1000 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
         >
-          <SectionTitle>Understand model behavior. Don't assign it.</SectionTitle>
+          <SectionTitle>Understand model behavior.<br />Don't assign it.</SectionTitle>
           <SectionContent>
             <p>
               Latent Spaces is the first mobile app designed from the ground up as a <CodeChip href="/blog/the-probable-beauty-of-llms">Loom interface</CodeChip> for language models, allowing you to see multiple possible continuations of the same prompt and explore any branch you choose.

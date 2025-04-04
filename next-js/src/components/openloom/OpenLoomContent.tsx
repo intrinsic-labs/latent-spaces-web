@@ -65,20 +65,20 @@ const OpenLoomContent = ({ post }: OpenLoomContentProps) => {
                       </SyntaxHighlighter>
                     </div>
                   ) : (
-                    <code className={className} {...props}>
+                    <code className="bg-neutral-800/40 text-orange rounded px-1.5 py-0.5 font-calling-code text-[1rem]" {...props}>
                       {children}
                     </code>
                   );
                 },
                 // Custom rendering for headings with anchor links
                 h1: ({ node, ...props }: any) => (
-                  <h1 className="text-3xl font-bold mt-12 mb-6" {...props} />
+                  <h1 className="text-3xl font-neue-montreal font-bold mt-12 mb-6" {...props} />
                 ),
                 h2: ({ node, ...props }: any) => (
-                  <h2 className="text-2xl font-bold mt-10 mb-4" {...props} />
+                  <h2 className="text-2xl font-neue-montreal font-bold mt-10 mb-4" {...props} />
                 ),
                 h3: ({ node, ...props }: any) => (
-                  <h3 className="text-xl font-bold mt-8 mb-4" {...props} />
+                  <h3 className="text-xl font-neue-montreal font-bold mt-8 mb-4" {...props} />
                 ),
                 p: ({ node, ...props }: any) => (
                   <p className="leading-relaxed mb-6" {...props} />
@@ -109,7 +109,7 @@ const OpenLoomContent = ({ post }: OpenLoomContentProps) => {
           
           {/* Share */}
           <div className="mt-12">
-            <h3 className="text-md font-medium mb-4">Share This Page</h3>
+            <h3 className="text-md font-neue-montreal font-medium mb-4">Share This Page</h3>
             <div className="flex space-x-4">
               <button 
                 onClick={() => {

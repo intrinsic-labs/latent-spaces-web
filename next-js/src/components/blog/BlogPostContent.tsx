@@ -64,20 +64,20 @@ const BlogPostContent = ({ post }: BlogPostContentProps) => {
                       </SyntaxHighlighter>
                     </div>
                   ) : (
-                    <code className={className} {...props}>
+                    <code className="bg-neutral-300/60 text-orange rounded px-1.5 py-0.5 font-calling-code text-[1rem]" {...props}>
                       {children}
                     </code>
                   );
                 },
                 // Custom rendering for headings with anchor links
                 h1: ({ node, ...props }: any) => (
-                  <h1 className="text-3xl font-bold mt-12 mb-6 text-primary" {...props} />
+                  <h1 className="text-3xl font-neue-montreal font-bold mt-12 mb-6 text-primary" {...props} />
                 ),
                 h2: ({ node, ...props }: any) => (
-                  <h2 className="text-2xl font-bold mt-10 mb-4 text-primary" {...props} />
+                  <h2 className="text-2xl font-neue-montreal font-bold mt-10 mb-4 text-primary" {...props} />
                 ),
                 h3: ({ node, ...props }: any) => (
-                  <h3 className="text-xl font-bold mt-8 mb-4 text-primary" {...props} />
+                  <h3 className="text-xl font-neue-montreal font-bold mt-8 mb-4 text-primary" {...props} />
                 ),
                 p: ({ node, ...props }: any) => (
                   <p className="text-primary leading-relaxed mb-6" {...props} />
@@ -108,7 +108,7 @@ const BlogPostContent = ({ post }: BlogPostContentProps) => {
           
           {/* Tags */}
           <div className="mt-16 pt-8 border-t border-neutral-800/50">
-            <h3 className="text-md font-medium mb-4">Tags</h3>
+            <h3 className="text-md font-neue-montreal font-medium mb-4">Tags</h3>
             <div className="flex flex-wrap gap-2">
               {post.tags.map((tag, index) => (
                 <Link 
@@ -124,7 +124,7 @@ const BlogPostContent = ({ post }: BlogPostContentProps) => {
           
           {/* Share */}
           <div className="mt-12">
-            <h3 className="text-md font-medium mb-4">Share this article</h3>
+            <h3 className="text-md font-neue-montreal font-medium mb-4">Share this article</h3>
             <div className="flex space-x-4">
               <button 
                 onClick={() => {

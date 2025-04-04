@@ -47,14 +47,6 @@ const FeaturedPost = () => {
   return (
     <section className="py-8 md:px-4 md:py-16 bg-background/30">
       <div className="container-custom">
-        {/* <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="mb-6"
-        >
-          <span className="inline-block text-primary text-md font-medium">FEATURED PAPER</span>
-        </motion.div> */}
 
         <Link href={`/blog/${featuredPost.slug}`} className="block group">
           <motion.div 
@@ -93,20 +85,9 @@ const FeaturedPost = () => {
                     <span>{featuredPost.readingTime}</span>
                   </div>
                   
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-display text-secondary font-medium mb-4">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-neue-montreal font-medium text-secondary mb-4">
                     {featuredPost.title}
                   </h2>
-                  
-                  {/* <div className="flex flex-wrap gap-2 mb-2">
-                    {featuredPost.categories.map((category, index) => (
-                      <span 
-                        key={index} 
-                        className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary/90"
-                      >
-                        {category}
-                      </span>
-                    ))}
-                  </div> */}
                 </div>
               </div>
             </div>

@@ -48,7 +48,7 @@ const HomeHero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.05 }}
-            className="heading-xl mb-6 text-center tracking-tight"
+            className="heading-xl font-regular mb-6 text-center"
           >
             Latent Spaces
           </motion.h1>

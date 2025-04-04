@@ -129,7 +129,7 @@ export default function Fundraising() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
               <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-6 md:p-8 transition-colors duration-300 hover:border-white/40">
-                <h3 className="text-2xl mb-4 font-cardo">One-Time Contribution</h3>
+                <h3 className="text-2xl mb-4 font-neue-montreal font-medium">One-Time Contribution</h3>
                 <p>Support development with a single contribution.</p>
                 <div className="mt-6">
                   <a
@@ -145,7 +145,7 @@ export default function Fundraising() {
               <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-6 md:p-8 transition-colors duration-300 hover:border-white/40">
                 {!showMonthlyOptions ? (
                   <>
-                    <h3 className="text-2xl mb-4 font-cardo">Monthly Support</h3>
+                    <h3 className="text-2xl mb-4 font-neue-montreal font-medium">Monthly Support</h3>
                     <p>Become a regular supporter for continuous development.</p>
                     <div className="mt-6">
                       <button
@@ -169,7 +169,7 @@ export default function Fundraising() {
                         </svg>
                       </button>
                     </div>
-                    <h3 className="text-2xl mb-4 font-cardo">Select an amount</h3>
+                    <h3 className="text-2xl mb-4 font-neue-montreal font-medium">Select an amount</h3>
                     <div className="grid grid-cols-2 gap-3 mt-6">
                       {subscriptionTiers.map((tier) => (
                         <a

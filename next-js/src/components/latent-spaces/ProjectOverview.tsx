@@ -137,7 +137,7 @@ export default function ProjectOverview() {
           className="absolute top-0 left-0 w-full h-[120%] z-0 opacity-15"
         />
         <div className="relative z-10">
-          <SectionTitle>Where we're at</SectionTitle>
+          <SectionTitle>The state of things</SectionTitle>
           <SectionContent>
             <p>
               Currently, Latent Spaces exists as a prototype iOS app. Model providers <CodeChip href="https://openrouter.ai/" target="_blank" rel="noopener noreferrer">OpenRouter</CodeChip> and <CodeChip href="https://www.anthropic.com/" target="_blank" rel="noopener noreferrer">Anthropic</CodeChip> are currently

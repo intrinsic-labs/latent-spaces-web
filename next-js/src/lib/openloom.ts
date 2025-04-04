@@ -6,7 +6,7 @@ import { BlogPost } from "./blog";
  * OpenLoom Content
  */
 const openLoomContent = `
-## Introduction
+# Introduction
 
 The OpenLoom project aims to create a unified standard that LLM interfaces based on the [Loom Theory](/blog/the-probable-beauty-of-llms) can implement to easily share trees between platforms. It defines shapes for loom trees (conversations) and nodes (messages), as well as example methods for traversing and interacting with the tree. 
 
@@ -18,11 +18,11 @@ This makes it easy to quickly identify files compatible with OpenLoom. Read the 
 
 ---
 
-## OpenLoom Nodes
+# OpenLoom Nodes
 
 Here, we'll define the structure of a single *node*. Nodes are the root level building blocks of a loom tree, and each represents a single message in a conversation. Nodes point to each other as parents and children to create the tree structure. \`OpenLoom v0.1\` only supports text-based nodes, but support for images and documents will be implemented in future versions.
 
-### Node Structure
+## Node Structure
 \`\`\`typescript
 // typescript
 // OpenLoom Version 0.1
@@ -51,18 +51,18 @@ enum Author { // A node must claim one of these cases as an author
 
 Most properties are self-explanatory, but the \`rememberedChildId\` property requires a bit more explanation.
 
-### Remembered Child
+## Remembered Child
 The \`rememberedChildId\` property is used to retrace conversation branches. It should be set to null by default, and updated the first time the user navigates to a child of that node. It should be subsequently updated whenever the user navigates to an alternate child, effectivley guaranteeing that it will always point to the most recently visited child.
 
 This becomes useful when the user wants to trace a branch down as far as it goes, without having to reconstruct the branch manually, node by node. More on this in the loom tree section.
 
 ---
 
-## OpenLoom Loom Trees
+# OpenLoom Loom Trees
 
 In this section, we'll define a *loom tree* - a non-linear conversational exchange composed of nodes. Loom trees always have a single root node, and can have any number of child nodes. Bookmarked nodes are also tracked at the tree level, letting users quickly jump back to an important point in the exchange.
 
-### Loom Tree Structure
+## Loom Tree Structure
 \`\`\`typescript
 // typescript
 // OpenLoom Version 0.1
@@ -80,11 +80,11 @@ type LoomTree = {
     bookmarkedNodes: { [key: string]: OpenLoomNode }; // Map of node IDs to OpenLoomNodes for bookmarked nodes
 }
 \`\`\`
-### Sharing Trees
+## Sharing Trees
 
 In order to make OpenLoom and loom trees as useful as possible to others, it's good practice to provide a description of the tree. This can be as simple as *"A brief conversation about the meaning of life"* or something much more in depth; the general idea is to try to give some idea of what the tree contains.
 
-### Navigating The Tree
+## Navigating The Tree
 Below, you can see an example implementation of a function to get all the relevant nodes for a branch of the conversation. This would be defined as a method on the \`LoomTree\` class, and also handles updating the tree's current node property appropriately. This method makes it easy to regularly update the UI of an interface to only show nodes that are relevant to the current branch. To get the conversation preceeding a given node, simply call the method with that node as the \`input_node\`. To trace the conversation branch forward to the latest message (for example, when the node in question is *not* the latest message), you would set the \`trace_children\` parameter to \`true\`.
 
 \`\`\`python
@@ -152,7 +152,7 @@ def load_nodes(input_node=None, trace_children=False):
 \`\`\`
 
 
-## Future Improvements
+# Future Improvements
 
 OpenLoom is in its infancy. Stay tuned for significant architectural changes and improvements in upcoming versions.
 

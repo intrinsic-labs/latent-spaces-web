@@ -47,7 +47,7 @@ const Footer = () => {
               height={80}
               className="mb-6"
             /> */}
-            <div className="logo-text text-2xl mb-4 text-secondary">
+            <div className="logo-text text-2xl mb-4 text-secondary font-neue-montreal font-bold">
               Latent Spaces
             </div>
             <div className="text-neutral-500 text-sm mb-4">

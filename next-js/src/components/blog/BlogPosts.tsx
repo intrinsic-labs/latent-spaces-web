@@ -134,7 +134,7 @@ const BlogPosts = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-display font-medium mb-6 md:mb-0"
+            className="text-3xl md:text-4xl font-neue-montreal font-medium mb-6 md:mb-0"
           >
             Publications
           </motion.h2>
