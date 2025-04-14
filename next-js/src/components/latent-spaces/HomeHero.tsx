@@ -78,42 +78,6 @@ const HomeHero = () => {
             Support the Beta
           </a>
         </motion.div>
-
-          {/* Subtitle */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-wrap items-center gap-5 mb-10 justify-center"
-          >
-            
-            <div className="text-md font-calling-code text-neutral-300 border border-neutral-400 rounded-full px-4 py-1">
-              Current Version: {post.id}
-            </div>
-          </motion.div> */}
-          
-          {/* Featured image */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="rounded-xl overflow-hidden mx-auto border border-neutral-800"
-          >
-            {post.coverImage ? (
-              <div className="aspect-w-16 aspect-h-16 md:aspect-h-12 lg:aspect-h-8">
-                <img 
-                  src={post.coverImage} 
-                  alt={post.title} 
-                  className="object-cover w-full h-full"
-                />
-              </div>
-            ) : (
-              <PlaceholderImage 
-                text={post.title} 
-                aspectRatio="16/9"
-              />
-            )}
-          </motion.div> */}
         </div>
       </div>
     </section>

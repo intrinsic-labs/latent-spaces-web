@@ -1,84 +1,11 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import Image from 'next/image';
 import SectionTitle from '../ui/SectionTitle';
 import SectionContent from '../ui/SectionContent';
 import AccentText from './AccentText';
 import CodeChip from './CodeChip';
-import { AnimatePresence, motion } from 'framer-motion';
-import { FiX } from 'react-icons/fi';
-
-// FullscreenImageModal component
-const FullscreenImageModal = ({ 
-  isOpen, 
-  onClose, 
-  imageSrc, 
-  alt 
-}: { 
-  isOpen: boolean; 
-  onClose: () => void; 
-  imageSrc: string; 
-  alt: string;
-}) => {
-  if (!isOpen) return null;
-
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-background"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          <button 
-            onClick={onClose} 
-            className="absolute top-4 right-4 z-50 p-2 rounded-full bg-gray-500 hover:bg-gray-400"
-            aria-label="Close"
-          >
-            <FiX size={24} />
-          </button>
-          <div className="relative w-full h-full max-w-3xl max-h-[80vh] p-4">
-            <Image
-              src={imageSrc}
-              alt={alt}
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-};
-
-// ClickableImage component
-const ClickableImage = ({ 
-  src, 
-  alt, 
-  onClick 
-}: { 
-  src: string; 
-  alt: string; 
-  onClick: () => void;
-}) => {
-  return (
-    <div 
-      className="relative aspect-[9/19.5] cursor-pointer"
-      onClick={onClick}
-    >
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        className="object-contain rounded-lg"
-      />
-    </div>
-  );
-};
+import { ClickableImage, FullscreenImageModal } from '../ui/ClickableImage';
 
 export default function ProjectOverview() {
   const parallaxBgRef = useRef<HTMLDivElement>(null);
@@ -117,7 +44,7 @@ export default function ProjectOverview() {
     } else {
       document.body.style.overflow = '';
     }
-    
+
     return () => {
       document.body.style.overflow = '';
     };
@@ -125,15 +52,15 @@ export default function ProjectOverview() {
 
   return (
     <section className="py-12 px-8 max-w-3xl mx-auto relative overflow-hidden">
-      <FullscreenImageModal 
-        isOpen={modalOpen} 
-        onClose={closeModal} 
-        imageSrc={selectedImage.src} 
-        alt={selectedImage.alt} 
+      <FullscreenImageModal
+        isOpen={modalOpen}
+        onClose={closeModal}
+        imageSrc={selectedImage.src}
+        alt={selectedImage.alt}
       />
       <div className="relative overflow-hidden">
-        <div 
-          ref={parallaxBgRef} 
+        <div
+          ref={parallaxBgRef}
           className="absolute top-0 left-0 w-full h-[120%] z-0 opacity-15"
         />
         <div className="relative z-10">
@@ -145,20 +72,20 @@ export default function ProjectOverview() {
             </p>
             <br />
             <div className="grid grid-cols-3 gap-4 w-full">
-              <ClickableImage 
-                src="/images/latent-spaces/screenshots/01.png" 
-                alt="Latent Spaces app screenshot" 
-                onClick={() => openModal("/images/latent-spaces/screenshots/01.png", "Latent Spaces app screenshot")} 
+              <ClickableImage
+                src="/images/latent-spaces/screenshots/01.png"
+                alt="Latent Spaces app screenshot"
+                onClick={() => openModal("/images/latent-spaces/screenshots/01.png", "Latent Spaces app screenshot")}
               />
-              <ClickableImage 
-                src="/images/latent-spaces/screenshots/05.png" 
-                alt="Latent Spaces app screenshot" 
-                onClick={() => openModal("/images/latent-spaces/screenshots/05.png", "Latent Spaces app screenshot")} 
+              <ClickableImage
+                src="/images/latent-spaces/screenshots/05.png"
+                alt="Latent Spaces app screenshot"
+                onClick={() => openModal("/images/latent-spaces/screenshots/05.png", "Latent Spaces app screenshot")}
               />
-              <ClickableImage 
-                src="/images/latent-spaces/screenshots/06.png" 
-                alt="Latent Spaces app screenshot" 
-                onClick={() => openModal("/images/latent-spaces/screenshots/06.png", "Latent Spaces app screenshot")} 
+              <ClickableImage
+                src="/images/latent-spaces/screenshots/06.png"
+                alt="Latent Spaces app screenshot"
+                onClick={() => openModal("/images/latent-spaces/screenshots/06.png", "Latent Spaces app screenshot")}
               />
             </div>
             <div className="flex items-center justify-center pt-4 font-calling-code text-neutral-400 text-sm">click to expand</div>
@@ -168,25 +95,25 @@ export default function ProjectOverview() {
             </AccentText>
             <br />
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
-              <ClickableImage 
-                src="/images/latent-spaces/screenshots/03.png" 
-                alt="Latent Spaces app screenshot" 
-                onClick={() => openModal("/images/latent-spaces/screenshots/03.png", "Latent Spaces app screenshot")} 
+              <ClickableImage
+                src="/images/latent-spaces/screenshots/03.png"
+                alt="Latent Spaces app screenshot"
+                onClick={() => openModal("/images/latent-spaces/screenshots/03.png", "Latent Spaces app screenshot")}
               />
-              <ClickableImage 
-                src="/images/latent-spaces/screenshots/04.png" 
-                alt="Latent Spaces app screenshot" 
-                onClick={() => openModal("/images/latent-spaces/screenshots/04.png", "Latent Spaces app screenshot")} 
+              <ClickableImage
+                src="/images/latent-spaces/screenshots/04.png"
+                alt="Latent Spaces app screenshot"
+                onClick={() => openModal("/images/latent-spaces/screenshots/04.png", "Latent Spaces app screenshot")}
               />
-              <ClickableImage 
-                src="/images/latent-spaces/screenshots/07.png" 
-                alt="Latent Spaces app screenshot" 
-                onClick={() => openModal("/images/latent-spaces/screenshots/07.png", "Latent Spaces app screenshot")} 
+              <ClickableImage
+                src="/images/latent-spaces/screenshots/07.png"
+                alt="Latent Spaces app screenshot"
+                onClick={() => openModal("/images/latent-spaces/screenshots/07.png", "Latent Spaces app screenshot")}
               />
-              <ClickableImage 
-                src="/images/latent-spaces/screenshots/08.png" 
-                alt="Latent Spaces app screenshot" 
-                onClick={() => openModal("/images/latent-spaces/screenshots/08.png", "Latent Spaces app screenshot")} 
+              <ClickableImage
+                src="/images/latent-spaces/screenshots/08.png"
+                alt="Latent Spaces app screenshot"
+                onClick={() => openModal("/images/latent-spaces/screenshots/08.png", "Latent Spaces app screenshot")}
               />
             </div>
             <div className="flex items-center justify-center pt-4 font-calling-code text-neutral-400 text-sm">click to expand</div>

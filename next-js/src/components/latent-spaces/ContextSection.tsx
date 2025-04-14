@@ -5,11 +5,23 @@ import SectionTitle from '../ui/SectionTitle';
 import SectionContent from '../ui/SectionContent';
 import AccentText from './AccentText';
 import CodeChip from './CodeChip';
+import { ClickableImage, FullscreenImageModal } from '../ui/ClickableImage';
 
 export default function ContextSection() {
   const parallaxBgRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState({ src: '', alt: '' });
+
+  const openModal = (src: string, alt: string) => {
+    setSelectedImage({ src, alt });
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,8 +50,27 @@ export default function ContextSection() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isVisible]);
 
+  useEffect(() => {
+    // Prevent body scrolling when modal is open
+    if (modalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [modalOpen]);
+
   return (
     <section className="pb-6 pt-12 px-8 max-w-3xl mx-auto relative overflow-hidden" id="about">
+      <FullscreenImageModal 
+        isOpen={modalOpen} 
+        onClose={closeModal} 
+        imageSrc={selectedImage.src} 
+        alt={selectedImage.alt} 
+      />
       <div className="relative overflow-hidden">
         <div 
           ref={parallaxBgRef} 
@@ -49,6 +80,7 @@ export default function ContextSection() {
           ref={sectionRef}
           className={`relative z-10 transition-opacity duration-1000 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
         >
+          <div>
           <SectionTitle>Understand model behavior.<br />Don't assign it.</SectionTitle>
           <SectionContent>
             <p>
@@ -63,6 +95,8 @@ export default function ContextSection() {
               Intrinsic Labs is invested in facilitating widespread, deep understanding of AI behavior. Latent Spaces is our first big step in that direction.
             </AccentText>
           </SectionContent>
+          </div>
+          {/* TODO: Add images here */}
         </div>
       </div>
     </section>
