@@ -94,7 +94,7 @@ export default function Fundraising() {
   }, []);
 
   return (
-    <section className="px-4 py-12 max-w-5xl mx-auto relative overflow-hidden" id="fundraising">
+    <section className="py-12 max-w-5xl mx-auto relative overflow-hidden" id="fundraising">
       <div className="relative">
         <div
           ref={parallaxBgRef}
@@ -103,7 +103,7 @@ export default function Fundraising() {
         <div className="relative z-10">
 
 
-          <div className="bg-white/[0.03] border border-ls-accent/40 rounded-2xl p-6 pt-8 md:p-8 my-8 mb-16 shadow-[0_0_15px_rgba(255,255,255,0.1)] box-shadow-lg">
+          <div className="bg-white/[0.03] border border-ls-accent/40 rounded-2xl p-6 pt-8 md:p-8 my-8 mb-16 mx-4 shadow-[0_0_15px_rgba(255,255,255,0.1)] box-shadow-lg">
             <SectionTitle>Beta Fundraiser</SectionTitle>
             <SectionContent>
               Your support will directly fund development of Latent Spaces and the OpenLoom protocol. We're aiming to launch a public beta with a core set of features that will enable users to experience a true loom interface on their mobile devices.
@@ -193,7 +193,7 @@ export default function Fundraising() {
 
 
 
-          <div className="px-2 max-w-3xl mx-auto">
+          <div className="px-6 max-w-3xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

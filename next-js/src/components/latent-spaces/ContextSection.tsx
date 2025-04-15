@@ -64,7 +64,7 @@ export default function ContextSection() {
   }, [modalOpen]);
 
   return (
-    <section className="pb-6 pt-8 md:pt-12 px-6 max-w-5xl mx-auto relative overflow-hidden" id="about">
+    <section className="pb-6 pt-4 md:pt-12 max-w-5xl mx-auto relative overflow-hidden" id="about">
       <FullscreenImageModal 
         isOpen={modalOpen} 
         onClose={closeModal} 
@@ -82,9 +82,9 @@ export default function ContextSection() {
         >
           <div>
             {/* <SectionTitle className="max-w-3xl mx-auto">Understand model behavior.<br />Don't assign it.</SectionTitle> */}
-
+            <div className="px-2">
             {/* Vimeo embed */}
-            <div className="mb-8 md:mb-12 w-full relative" style={{ paddingBottom: '56.25%' }}>
+            <div className="mb-8 md:mb-12 relative" style={{ paddingBottom: '56.25%' }}>
               <iframe 
                 src="https://player.vimeo.com/video/1075565642?h=0&autoplay=0&title=0&byline=0&portrait=0"
                 className="absolute top-0 left-0 w-full h-full rounded-xl border border-white/10"
@@ -94,10 +94,12 @@ export default function ContextSection() {
               ></iframe>
               {/* https://vimeo.com/1075565642?share=copy */}
             </div>
+            </div>
+            <div className="px-6 mx-auto max-w-3xl">
+              <SectionTitle className="max-w-3xl">Understand model behavior.<br />Don't assign it.</SectionTitle>
+            </div>
 
-            <SectionTitle className="max-w-3xl mx-auto">Understand model behavior.<br />Don't assign it.</SectionTitle>
-
-            <SectionContent className="max-w-3xl mx-auto">
+            <SectionContent className="max-w-3xl mx-auto px-6">
               <p>
                 Latent Spaces is the first mobile app designed from the ground up as a <CodeChip href="/blog/the-probable-beauty-of-llms">Loom interface</CodeChip> for language models, allowing you to see multiple possible continuations of the same prompt and explore any branch you choose.
               </p>
