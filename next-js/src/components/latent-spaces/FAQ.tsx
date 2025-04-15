@@ -94,7 +94,7 @@ export default function FAQ() {
   }, []);
 
   return (
-    <section className="px-4 max-w-3xl mx-auto relative overflow-hidden" id="faq">
+    <section className="px-2 max-w-3xl mx-auto relative overflow-hidden" id="faq">
       <div className="relative overflow-hidden">
         <div 
           ref={parallaxBgRef} 
@@ -103,7 +103,7 @@ export default function FAQ() {
         <div className="relative z-10">
           <SectionTitle className="ml-4">FAQ</SectionTitle>
 
-          <div className="bg-white/[0.03] rounded-xl p-6 md:p-8">
+          <div className="bg-white/[0.03] rounded-xl p-6 md:p-8 mx-2">
             {faqData.map((item, index) => (
               <FAQItem key={index} question={item.question} answer={item.answer} />
             ))}

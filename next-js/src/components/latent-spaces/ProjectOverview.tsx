@@ -51,7 +51,7 @@ export default function ProjectOverview() {
   }, [modalOpen]);
 
   return (
-    <section className="py-12 px-8 max-w-3xl mx-auto relative overflow-hidden">
+    <section className="py-12 px-6 max-w-3xl mx-auto relative overflow-hidden">
       <FullscreenImageModal
         isOpen={modalOpen}
         onClose={closeModal}

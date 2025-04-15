@@ -38,7 +38,7 @@ const OpenLoomContent = ({ post }: OpenLoomContentProps) => {
   }
 
   return (
-    <section className="pt-4 md:pt-8 pb-16 font-cardo text-[1.2rem] leading-[1.8] tracking-[0.01rem]">
+    <section className="pt-4 md:pt-8 pb-16 px-2 font-cardo text-[1.2rem] leading-[1.8] tracking-[0.01rem]">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
