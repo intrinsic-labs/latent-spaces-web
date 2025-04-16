@@ -73,7 +73,7 @@ export default function ProductState() {
             </p>
             <br />
             <AccentText color="text-white">
-              The fundrasier aims to get the iOS app and web app ready for a public beta release.
+              The fundraiser aims to get the iOS app and web app ready for a public beta release.
             </AccentText>
             <div className="">
               {/* Vimeo embed */}

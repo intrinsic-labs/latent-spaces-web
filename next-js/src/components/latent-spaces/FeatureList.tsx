@@ -4,6 +4,7 @@ import SectionContent from '../ui/SectionContent';
 import CodeChip from './CodeChip';
 import FeatureItem from './FeatureItem';
 import { iosFeatures, webFeatures, openLoomFeatures } from '@/lib/fundraisingData';
+import { discordInvite } from '@/lib/links';
 
 export default function FeatureList() {
   return (
@@ -17,7 +18,7 @@ export default function FeatureList() {
         <SectionTitle>Planned Features</SectionTitle>
         <SectionContent>
           The following features are planned for the public beta release. These will be marked completed as they are implemented.
-          Think something is missing? <CodeChip href="">Join the Discord</CodeChip> and let's talk!
+          Think something is missing? <CodeChip href={discordInvite}>Join the Discord</CodeChip> and let's talk!
         </SectionContent>
       </motion.div>
 
