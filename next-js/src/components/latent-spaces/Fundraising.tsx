@@ -67,7 +67,7 @@ export default function Fundraising({ className, id }: FundraisingProps) {
           <div className="bg-white/[0.03] border border-ls-accent/40 rounded-2xl p-6 pt-8 md:p-8 my-8 mb-16 mx-4 shadow-[0_0_15px_rgba(255,255,255,0.1)] box-shadow-lg">
             <SectionTitle>Beta Fundraiser</SectionTitle>
             <SectionContent>
-              Your support will directly fund development of Latent Spaces and the OpenLoom protocol. We're aiming to launch a public beta with a core set of features that will enable users to experience a true loom interface on their mobile devices.
+              Your support will directly fund development of Latent Spaces and the OpenLoom protocol. We&apos;re building this from the ground up to be open, exploratory, and useful to everyone. If you believe in this mission, you can help achieve it faster.
             </SectionContent>
 
             <div className="my-12">

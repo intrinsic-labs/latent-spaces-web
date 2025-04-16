@@ -3,6 +3,7 @@
 import { useRef, useEffect } from 'react';
 import SectionContent from '../ui/SectionContent';
 import SectionTitle from '../ui/SectionTitle';
+import AccentText from './AccentText';
 
 export default function DonationPerks() {
   const parallaxBgRef = useRef<HTMLDivElement>(null);
@@ -37,19 +38,10 @@ export default function DonationPerks() {
               <p>
                 Your support helps us continue building Latent Spaces into the best AI interface on the market. Every contribution unlocks exclusive perks designed for our community.
               </p>
-              {/* <br />
-              <ul className="list-disc pl-8 space-y-3">
-                <li>
-                  <span className="font-semibold">Exclusive Beta Features:</span> Early access to experimental models and features not yet available to the public.
-                </li>
-                <li>
-                  <span className="font-semibold">Research Collaborations:</span> Opportunities to collaborate on research papers using Latent Spaces, with acknowledgment in publications.
-                </li>
-                <li>
-                  <span className="font-semibold">Educational Webinars:</span> In-depth sessions explaining the mechanics of the loom interface and advanced AI exploration techniques.
-                </li>
-              </ul> */}
               <br />
+              <AccentText>
+                <b>LIMITED OFFER:</b> the first 25 people to contribute at the Pro Tier or higher will receive one of 25 limited edition Latent Spaces hoodies.
+              </AccentText>
             </SectionContent>
           </div>
 
@@ -91,19 +83,10 @@ export default function DonationPerks() {
           </div>
 
           {/* <div className="max-w-3xl mx-auto">
-            <SectionContent className="mb-8">
-              <ul className="space-y-3">
-                <li>
-                  <span className="font-semibold">Exclusive Beta Features:</span> Early access to experimental models and features not yet available to the public.
-                </li>
-                <li>
-                  <span className="font-semibold">Research Collaborations:</span> Opportunities to collaborate on research papers using Latent Spaces, with acknowledgment in publications.
-                </li>
-                <li>
-                  <span className="font-semibold">Educational Webinars:</span> In-depth sessions explaining the mechanics of the loom interface and advanced AI exploration techniques.
-                </li>
-              </ul>
-              <br />
+            <SectionContent className="mb-8 px-6">
+              <AccentText>
+                <b>LIMITED OFFER:</b> the first 25 people to contribute at the Pro Tier or higher will receive one of 25 limited edition Latent Spaces hoodies.
+              </AccentText>
             </SectionContent>
           </div> */}
 
