@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiGithub, FiTwitter, FiInstagram } from 'react-icons/fi';
+import { FiInstagram } from 'react-icons/fi';
+import { FaXTwitter } from 'react-icons/fa6';
 import { useTheme } from './ThemeProvider';
-import Image from 'next/image';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,15 +51,15 @@ const Navigation = () => {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { name: 'Fundraiser', href: '/#fundraising' },
+    { name: 'Contribute Now', href: '/fundraising' },
     { name: 'OpenLoom', href: '/openloom' },
+    { name: 'Development', href: '/devlog' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ];
 
   const socialLinks = [
-    { name: 'GitHub', href: 'https://github.com/intrinsic-labs', icon: <FiGithub size={20} /> },
-    { name: 'Twitter', href: 'https://twitter.com/intrinsic_labs', icon: <FiTwitter size={20} /> },
+    { name: 'X', href: 'https://twitter.com/intrinsic_labs', icon: <FaXTwitter size={20} /> },
     { name: 'Instagram', href: 'https://instagram.com/intrinsiclabs', icon: <FiInstagram size={20} /> },
   ];
 
@@ -125,7 +125,7 @@ const Navigation = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="font-light"
+              className={`font-light`}
             >
               <Link
                 href={link.href}
@@ -199,6 +199,14 @@ const Navigation = () => {
                   </div>
                 ))}
               </div>
+
+              <Link
+                href="/fundraising"
+                className="inline-block bg-ls-accent hover:bg-ls-accent/30 backdrop-blur-md border border-ls-accent hover:border-ls-accentLight text-white py-3 w-full max-w-[325px]md:max-w-[400px] font-calling-code text-[1.1rem] rounded-full cursor-pointer transition-all duration-300 text-center my-8 max-w-xl"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contribute Now
+              </Link>
 
               <div className="mt-auto pt-8">
                 <div className="flex justify-center space-x-6 py-8">

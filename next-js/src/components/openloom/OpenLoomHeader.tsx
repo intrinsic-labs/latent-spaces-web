@@ -36,7 +36,7 @@ const OpenLoomHeader = ({ post }: OpenLoomHeaderProps) => {
           className="h-full w-full"
         >
           <Image 
-            src="/images/blog/005 Medium.jpeg" 
+            src="/images/openloom.jpg" 
             alt="Latent Spaces background" 
             fill
             priority
@@ -55,7 +55,7 @@ const OpenLoomHeader = ({ post }: OpenLoomHeaderProps) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="heading-xl mb-6 text-center"
+            className="heading-xl mb-4 text-center"
           >
             OpenLoom
           </motion.h1>
@@ -65,7 +65,7 @@ const OpenLoomHeader = ({ post }: OpenLoomHeaderProps) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-wrap items-center gap-5 mb-8 justify-center"
+            className="flex flex-wrap items-center gap-5 mb-6 justify-center"
           >
             
             <div className="text-xl pt-2 font-calling-code text-neutral-200 drop-shadow-md">

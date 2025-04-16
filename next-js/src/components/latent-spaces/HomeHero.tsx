@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
+import CodeChip from './CodeChip';
+import { loomInterface } from '@/lib/links';
 
 const HomeHero = () => {
   const backgroundRef = useRef<HTMLDivElement>(null);
@@ -41,16 +43,16 @@ const HomeHero = () => {
 
       <div className="container-custom relative z-10">
         
-        <div className="max-w-4xl mx-auto pt-16 text-center">
+        <div className="max-w-5xl mx-auto pt-16 text-center">
           
           {/* Title */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.05 }}
-            className="heading-xl font-regular mb-6 text-center"
+            className="heading-xl font-regular mb-6 text-center tracking-tight"
           >
-            Latent Spaces
+            Unlock the future of AI with Latent Spaces
           </motion.h1>
           
           {/* Subtitle */}
@@ -61,8 +63,8 @@ const HomeHero = () => {
             className="flex flex-wrap items-center gap-5 mb-8 justify-center"
           >
             
-            <div className="text-xl pt-2 font-calling-code text-neutral-300">
-              A Loom Interface
+            <div className="text-2xl pt-2 font-neue-montreal text-neutral-200 tracking-wide">
+              Go beyond AI chat with a loom interface right in your pocket
             </div>
           </motion.div>
 
@@ -72,10 +74,10 @@ const HomeHero = () => {
           transition={{ delay: 0.1, duration: 0.5 }}
         >
           <a 
-            href="#fundraising" 
+            href={loomInterface} 
             className="inline-block bg-ls-accent hover:bg-ls-accent/30 backdrop-blur-md border border-ls-accent hover:border-ls-accentLight text-white py-3 w-full max-w-[325px]md:max-w-[400px] font-calling-code text-[1.1rem] rounded-full cursor-pointer transition-all duration-300 text-center mb-12 max-w-xl"
           >
-            Support the Beta
+            See How It Works
           </a>
         </motion.div>
         </div>

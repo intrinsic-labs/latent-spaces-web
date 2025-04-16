@@ -7,7 +7,7 @@ interface SectionContentProps {
 
 export default function SectionContent({ children, className }: SectionContentProps) {
   return (
-    <div className={`font-cardo text-[1.2rem] leading-[1.8] tracking-[0.01rem] text-white ${className}`}>
+    <div className={`font-cardo text-[1.3rem] leading-[1.6] tracking-[0.02rem] text-white ${className}`}>
       {children}
     </div>
   );

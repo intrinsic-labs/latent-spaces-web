@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { discordInvite } from '@/lib/links';
 
 export default function DiscordCTA() {
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -23,7 +24,7 @@ export default function DiscordCTA() {
   }, []);
 
   return (
-    <section className="py-32 px-8 bg-ls-background text-center">
+    <section className="py-16 px-8 bg-ls-background text-center">
       <div 
         ref={ctaRef} 
         className="max-w-[800px] mx-auto"
@@ -33,22 +34,22 @@ export default function DiscordCTA() {
         }}
       >
         <motion.h2 
-          className="font-neue-montreal text-[3rem] mb-10 leading-[1] relative font-bold text-white"
+          className="font-neue-montreal text-[3rem] mb-4 leading-[1] relative font-bold text-white"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          Join Our Community
+          Join The Discord
         </motion.h2>
         <motion.p 
-          className="font-cardo text-[1.2rem] leading-[1.8] tracking-[0.01rem] text-white mb-12 w-full max-w-xl mx-auto"
+          className="font-cardo text-[1.3rem] leading-[1.6] tracking-[0.03rem] text-white mb-6 w-full max-w-xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          Be part of the conversation, get early access to beta releases, and help shape the future of Latent Spaces.
+          Be part of the conversation and help shape the future of Latent Spaces.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -57,12 +58,12 @@ export default function DiscordCTA() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <a 
-            href="https://discord.gg/intrinsic-labs" 
+            href={discordInvite} 
             target="_blank" 
             rel="noopener noreferrer" 
             className="inline-block bg-ls-accent hover:bg-ls-accent/30 backdrop-blur-md border border-ls-accent hover:border-ls-accentLight text-white py-3 w-full max-w-[325px] md:max-w-[400px] font-calling-code text-[1.1rem] rounded-full cursor-pointer transition-all duration-300 text-center"
           >
-            Join the Discord
+            Accept Invite
           </a>
         </motion.div>
       </div>

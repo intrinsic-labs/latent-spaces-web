@@ -5,11 +5,14 @@ import { useEffect } from 'react';
 import Hero from '../components/latent-spaces/Hero';
 import HomeHero from '../components/latent-spaces/HomeHero';
 import ContextSection from '../components/latent-spaces/ContextSection';
-import ProjectOverview from '../components/latent-spaces/ProjectOverview';
+import LoomInterface from '../components/latent-spaces/LoomInterface';
 import Fundraising from '../components/latent-spaces/Fundraising';
 import FAQ from '../components/latent-spaces/FAQ';
 import DiscordCTA from '../components/latent-spaces/DiscordCTA';
 import { useTheme } from '../components/ThemeProvider';
+import SectionContent from '../components/ui/SectionContent';
+import CodeChip from '../components/latent-spaces/CodeChip';
+import { devlog } from '@/lib/links';
 
 export default function LatentSpacesPage() {
   const { setDarkTheme } = useTheme();
@@ -30,9 +33,10 @@ export default function LatentSpacesPage() {
     >
       <HomeHero />
       <ContextSection />
-      <ProjectOverview />
-      <Fundraising />
-      <FAQ />
+      <Fundraising className="pt-12" />
+      <SectionContent className="max-w-3xl mx-auto px-6 text-center">
+      Want to see where we are and where we&apos;re going?<br /><CodeChip href={devlog}>Check out the dev log.</CodeChip>
+      </SectionContent>
       <DiscordCTA />
     </motion.main>
   );

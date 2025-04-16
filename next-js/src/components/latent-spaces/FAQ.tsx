@@ -50,24 +50,20 @@ const faqData = [
     answer: "Latent Spaces is an app being developed for iOS, Android, and web that allows you to explore and pursue the many possible continuations of any prompt (a Loom interface), with a focus on understanding how language models actually work."
   },
   {
-    question: "What is a loom interface?",
-    answer: "A loom interface is a way of structuring conversations with AI that allows for non-linear exploration. Unlike traditional chat interfaces where each exchange is linear (one response follows another), a loom allows you to branch off in different directions from any point in the conversation, creating a network of interconnected thoughts and ideas."
-  },
-  {
     question: "Is Latent Spaces open source?",
-    answer: "Latent Spaces is proprietary, but the OpenLoom protocol is open source and can be used by other apps - in fact, that's the whole point!"
+    answer: "Latent Spaces is proprietary, but the OpenLoom protocol is open source and can be used by other apps - in fact, that's the whole point! Read more on the OpenLoom page."
   },
   {
-    question: "Will I need to pay to use Latent Spaces?",
-    answer: "While in development, Latent Spaces will require you to connect your own API keys for language models. This means you'll need to pay for your own API usage based on the pricing of those providers. This approach gives users flexibility to choose which models they want to use and keeps costs transparent. In the future, Latent Spaces will  include a subscription model to simplify onboarding and give users access to more features."
+    question: "Is Latent Spaces free?",
+    answer: "While in development, Latent Spaces will require you to connect your own API keys for language models. This means you'll need to pay for your own API usage based on the pricing of those providers. In the future, Latent Spaces will introduce a subscription model to simplify onboarding and give users access to custom features."
   },
   {
     question: "When will the beta be available?",
     answer: "We're aiming to launch the first public beta of Latent Spaces in Summer 2025, provided we reach our fundraising goals. Development timelines may adjust based on funding and development progress."
   },
   {
-    question: "How will the fundraiser funds be used?",
-    answer: "Funds raised will directly support development of both the Latent Spaces iOS app, the web app, and the OpenLoom protocol. This includes addressing performance issues, implementing core features like saving prompts and node editing, and expanding capabilities like image uploads and voice transcription. The detailed scope of work is outlined in the fundraiser section."
+    question: "How will the funds be used?",
+    answer: "Funds raised will directly support development of the Latent Spaces iOS app, the web app, and the OpenLoom protocol. This includes implementing core features like saving prompts and node editing, expanding capabilities like image uploads and voice transcription, and more. A detailed scope of work is outlined on the Development page."
   },
 ];
 
@@ -94,7 +90,7 @@ export default function FAQ() {
   }, []);
 
   return (
-    <section className="px-2 max-w-3xl mx-auto relative overflow-hidden" id="faq">
+    <section className="px-2 pb-12 max-w-3xl mx-auto relative overflow-hidden" id="faq">
       <div className="relative overflow-hidden">
         <div 
           ref={parallaxBgRef} 

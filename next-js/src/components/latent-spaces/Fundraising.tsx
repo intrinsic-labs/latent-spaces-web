@@ -2,56 +2,17 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import FeatureItem from './FeatureItem';
 import SectionTitle from '../ui/SectionTitle';
 import SectionContent from '../ui/SectionContent';
-import CodeChip from './CodeChip';
 import { getFundingData } from '@/lib/stripe';
+import { stripeOneTimeContribution, stripeSubscriptionTiers } from '@/lib/links';
 
-// Subscription tiers
-const subscriptionTiers = [
-  { id: 1, amount: 5, link: "https://donate.stripe.com/3csdUy9LDbvvgqQ4gi" },
-  { id: 2, amount: 10, link: "https://donate.stripe.com/6oE2bQ9LD433fmM147" },
-  { id: 3, amount: 20, link: "https://donate.stripe.com/6oE2bQaPHfLLcaA6op" },
-  { id: 4, amount: 25, link: "https://donate.stripe.com/dR66s63nf6bbcaA148" },
-  { id: 5, amount: 50, link: "https://donate.stripe.com/14kg2G2jbeHHfmM149" },
-  { id: 6, amount: 75, link: "https://donate.stripe.com/6oEdUy9LD9nneiIcMS" },
-  { id: 7, amount: 100, link: "https://donate.stripe.com/3cs03I5vn1UV2A014b" },
-  { id: 8, amount: 200, link: "https://donate.stripe.com/bIY03Iga1bvvcaAaEM" },
-];
+interface FundraisingProps {
+  className?: string;
+  id?: string;
+}
 
-// Features with funding status
-const iosFeatures = [
-  { id: 1, text: 'Improve app architecture for better scalability', funded: false },
-  { id: 2, text: 'Address SwiftData-related performance issues', funded: false },
-  { id: 3, text: 'Integrate Firebase for cloud backup and user authentication', funded: false },
-  { id: 4, text: 'Encrypt all message data via the Signal protocol (read more at signal.org/docs)', funded: false },
-  { id: 5, text: 'Upgrade node caching system', funded: false },
-  { id: 6, text: 'Add support for saving reusable system prompts', funded: false },
-  { id: 7, text: 'Add pinned/bookmarked trees', funded: false },
-  { id: 8, text: 'Add support for editing trees and nodes', funded: false },
-  { id: 9, text: 'Add full markdown and LaTeX display support', funded: false },
-  { id: 10, text: 'Add image upload support (for applicable models)', funded: false },
-  { id: 11, text: 'Add document upload support (for applicable models)', funded: false },
-  { id: 12, text: 'Parse reasoning tokens for relevant models (e.g. DeepSeek R1, Claude 3.7 Sonnet)', funded: false },
-  { id: 13, text: 'Add support for user defined models that comply with OpenAI API schema', funded: false },
-  { id: 14, text: 'Add on-device audio transcription for hands-free beta voice mode', funded: false },
-  { id: 15, text: 'Implement functional MVP of LoomDisplay (text-to-ASCII animation system)', funded: false },
-  { id: 16, text: 'Add Hyperbolic model provider', funded: false },
-];
-
-const webFeatures = [
-  { id: 1, text: 'Replicate iOS app features in responsive web app for an initial cross-platform version', funded: false },
-  { id: 2, text: 'Refine design and layout for desktop, tablet, and mobile', funded: false },
-];
-
-const openLoomFeatures = [
-  { id: 1, text: 'Upgrade OpenLoom protocol architecture from graph to hypergraph (better handling of multi-modal trees)', funded: false },
-  { id: 2, text: 'Upgrade node signing requirements to ensure accurate author attribution', funded: false },
-  { id: 3, text: 'Add support for non-text node types (e.g. images, documents)', funded: false },
-];
-
-export default function Fundraising() {
+export default function Fundraising({ className, id }: FundraisingProps) {
   const [animatedPercentage, setAnimatedPercentage] = useState(0);
   const [fundingData, setFundingData] = useState({
     current: 0,
@@ -94,7 +55,7 @@ export default function Fundraising() {
   }, []);
 
   return (
-    <section className="py-12 max-w-5xl mx-auto relative overflow-hidden" id="fundraising">
+    <section className={`max-w-5xl mx-auto relative overflow-hidden ${className}`} id={id}>
       <div className="relative">
         <div
           ref={parallaxBgRef}
@@ -133,7 +94,7 @@ export default function Fundraising() {
                 <p>Support development with a single contribution.</p>
                 <div className="mt-6">
                   <a
-                    href="https://donate.stripe.com/cN2cQu7Dvarr6QgdQQ"
+                    href={stripeOneTimeContribution}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block w-full bg-ls-yellow hover:bg-ls-yellow/30 backdrop-blur-md border border-ls-yellow hover:border-ls-yellowLight text-white py-3 px-6 font-calling-code text-[0.95rem] rounded-full cursor-pointer transition-all duration-300 text-center"
@@ -171,7 +132,7 @@ export default function Fundraising() {
                     </div>
                     <h3 className="text-2xl mb-4 font-neue-montreal font-medium">Select an amount</h3>
                     <div className="grid grid-cols-2 gap-3 mt-6">
-                      {subscriptionTiers.map((tier) => (
+                      {stripeSubscriptionTiers.map((tier) => (
                         <a
                           key={tier.id}
                           href={tier.link}
@@ -187,86 +148,6 @@ export default function Fundraising() {
                   </div>
                 )}
               </div>
-            </div>
-          </div>
-
-
-
-
-          <div className="px-6 max-w-3xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <SectionTitle>Feature List</SectionTitle>
-              <SectionContent>
-                The following features are planned for the public beta release. Featured will be marked completed as they are implemented, so stay tuned!
-              </SectionContent>
-            </motion.div>
-
-            <div className="my-20">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <CodeChip size="large">iOS App Improvements</CodeChip>
-              </motion.div>
-              <ul className="my-8">
-                {iosFeatures.map((feature, index) => (
-                  <FeatureItem
-                    key={feature.id}
-                    text={feature.text}
-                    funded={feature.funded}
-                    delay={0.1 + index * 0.05}
-                  />
-                ))}
-              </ul>
-            </div>
-
-            <div className="mb-20">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <CodeChip size="large">Web App Beta</CodeChip>
-              </motion.div>
-              <ul className="my-8">
-                {webFeatures.map((feature, index) => (
-                  <FeatureItem
-                    key={feature.id}
-                    text={feature.text}
-                    funded={feature.funded}
-                    delay={0.1 + index * 0.05}
-                  />
-                ))}
-              </ul>
-            </div>
-
-            <div className="mb-20">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <CodeChip size="large">OpenLoom Protocol Upgrades</CodeChip>
-              </motion.div>
-              <ul className="my-8">
-                {openLoomFeatures.map((feature, index) => (
-                  <FeatureItem
-                    key={feature.id}
-                    text={feature.text}
-                    funded={feature.funded}
-                    delay={0.1 + index * 0.05}
-                  />
-                ))}
-              </ul>
             </div>
           </div>
         </div>

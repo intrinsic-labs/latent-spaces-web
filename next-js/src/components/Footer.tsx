@@ -2,16 +2,17 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { FiInstagram, FiGithub } from 'react-icons/fi';
-import { FiTwitter } from 'react-icons/fi';
+import { FiInstagram } from 'react-icons/fi';
+import { FaXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
     company: [
-      { name: 'Fundraiser', href: '/#fundraising' },
+      { name: 'Contribute Now', href: '/fundraising' },
       { name: 'OpenLoom', href: '/openloom' },
+      { name: 'Development', href: '/devlog' },
       { name: 'Blog', href: '/blog' },
       { name: 'Contact', href: '/contact' },
     ],
@@ -28,8 +29,7 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: 'GitHub', href: 'https://github.com/intrinsic-labs', icon: <FiGithub size={20} /> },
-    { name: 'Twitter', href: 'https://twitter.com/intrinsic_labs', icon: <FiTwitter size={20} /> },
+    { name: 'X', href: 'https://twitter.com/intrinsic_labs', icon: <FaXTwitter size={20} /> },
     { name: 'Instagram', href: 'https://instagram.com/intrinsiclabs', icon: <FiInstagram size={20} /> },
   ];
 

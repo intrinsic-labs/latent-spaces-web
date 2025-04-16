@@ -299,7 +299,7 @@ body {
 
 .heading-xl {
   font-family: 'Neue Montreal', sans-serif;
-  font-weight: bold;
+  font-weight: 500;
    /* Medium weight */
   font-size: 3.75rem; /* text-4xl */
   line-height: 3.5rem;
