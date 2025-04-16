@@ -40,7 +40,7 @@ export default function DonationPerks() {
               </p>
               <br />
               <AccentText>
-                <b>LIMITED OFFER:</b> the first 25 people to contribute at the Pro Tier or higher will receive one of 25 limited edition Latent Spaces hoodies.
+                <b>LIMITED OFFER:</b> the first 25 people to contribute at the Pro Tier or higher will receive one of 25 limited edition Latent Spaces hoodies! Grab yours before they&apos;re gone.
               </AccentText>
             </SectionContent>
           </div>
