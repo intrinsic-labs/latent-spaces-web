@@ -75,7 +75,7 @@ const HomeHero = () => {
         >
           <a 
             href={loomInterface} 
-            className="inline-block bg-ls-accent hover:bg-ls-accent/30 backdrop-blur-md border border-ls-accent hover:border-ls-accentLight text-white py-3 w-full max-w-[325px]md:max-w-[400px] font-calling-code text-[1.1rem] rounded-full cursor-pointer transition-all duration-300 text-center mb-12 max-w-xl"
+            className="inline-block hover:bg-ls-accent bg-ls-accent/30 backdrop-blur-md border hover:border-ls-accent border-ls-accentLight text-white py-3 w-full max-w-[325px]md:max-w-[400px] font-calling-code text-[1.1rem] rounded-full cursor-pointer transition-all duration-300 text-center mb-12 max-w-xl"
           >
             See How It Works
           </a>
