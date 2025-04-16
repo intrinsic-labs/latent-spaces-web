@@ -51,7 +51,8 @@ export default function ContactPage() {
       transition={{ duration: 0.5 }}
     >
       <div className="container-custom">
-        <h1 className="heading-lg font-medium mb-12 text-center">Get In Touch</h1>
+        <h1 className="text-6xl font-medium font-neue-montreal mb-12 text-center">Get In Touch</h1>
+        <p className="text-center font-cardo text-2xl max-w-xl mx-auto mb-12">We&apos;d love to hear from you. Whether you have a question, a suggestion, or just want to say hello, don&apos;t hesitate to reach out!</p>
         
         <div className="max-w-lg mx-auto">
           {submitted ? (
@@ -122,7 +123,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={isSubmitting || formState.submitting}
-                className="w-full py-3 bg-ls-accent text-white rounded-lg hover:bg-accent transition-colors disabled:opacity-70"
+                className="w-full py-3 bg-ls-accent text-white rounded-full hover:bg-accent transition-colors disabled:opacity-70"
               >
                 {isSubmitting || formState.submitting ? 'Sending...' : 'Send Message'}
               </button>
