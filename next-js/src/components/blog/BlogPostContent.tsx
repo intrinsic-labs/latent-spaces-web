@@ -64,7 +64,7 @@ const BlogPostContent = ({ post }: BlogPostContentProps) => {
                       </SyntaxHighlighter>
                     </div>
                   ) : (
-                    <code className="bg-neutral-300/60 text-orange rounded px-1.5 py-0.5 font-calling-code text-[1rem]" {...props}>
+                    <code className="bg-neutral-300 text-neutral-800 rounded px-1.5 py-0.5 font-calling-code text-[1rem]" {...props}>
                       {children}
                     </code>
                   );
