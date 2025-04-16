@@ -34,7 +34,7 @@ export default function DiscordCTA() {
         }}
       >
         <motion.h2 
-          className="font-neue-montreal text-[3rem] mb-4 leading-[1] relative font-bold text-white"
+          className="font-neue-montreal text-[3rem] mb-4 leading-[1] relative font-medium text-white"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
