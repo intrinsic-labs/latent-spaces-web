@@ -51,7 +51,7 @@ const Navigation = () => {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { name: 'Contribute Now', href: '/fundraising' },
+    { name: 'Fundraiser', href: '/fundraising' },
     { name: 'OpenLoom', href: '/openloom' },
     { name: 'Development', href: '/devlog' },
     { name: 'Blog', href: '/blog' },
