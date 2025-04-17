@@ -61,7 +61,7 @@ const FundraisingHeader = () => {
             className="flex flex-wrap items-center gap-5 mb-10 justify-center"
           >
             <div className="text-md font-calling-code text-neutral-300 border border-neutral-400 rounded-full px-4 py-1 bg-neutral-300/10 backdrop-blur-md">
-              Campaign Status: In Preparation
+              Campaign Status: LIVE
             </div>
           </motion.div>
         </div>

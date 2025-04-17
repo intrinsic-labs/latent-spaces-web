@@ -59,7 +59,7 @@ const faqData = [
   },
   {
     question: "When will the beta be available?",
-    answer: "We're aiming to launch the first public beta of Latent Spaces in Summer 2025, provided we reach our fundraising goals. Development timelines may adjust based on funding and development progress."
+    answer: "We're aiming to launch the first public beta of Latent Spaces mid-late Summer 2025, provided we reach our fundraising goals. Development timelines may adjust based on funding and development progress."
   },
   {
     question: "How will the funds be used?",
