@@ -50,7 +50,7 @@ export default function DonationPerks() {
               <h3 className="text-2xl mb-2 font-neue-montreal font-medium">Base Tier</h3>
               <p className="mb-4 font-calling-code text-lg">$5-$10/month or $25 one-time contribution</p>
               <ul className="list-disc pl-5 space-y-2 font-cardo tracking-wide text-lg">
-                <li>Access to iOS alpha version of Latent Spaces</li>
+                <li>Access to current iOS version of Latent Spaces</li>
                 <li>Behind-the-scenes updates</li>
                 <li>Name acknowledgment on our website</li>
                 <li>Latent Spaces gel pen</li>

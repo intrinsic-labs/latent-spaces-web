@@ -49,7 +49,7 @@ export default function DiscordCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          Be part of the conversation and help shape the future of Latent Spaces.
+          Get access to the current iOS app, be part of the conversation, and help shape the future of Latent Spaces.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
