@@ -3,7 +3,7 @@ A Loom Interface
 
 ## Overview
 
-Latent Spaces is a next-generation platform designed to help users unlock the full potential of large language models (LLMs). Unlike traditional AI chat interfaces, Latent Spaces introduces the concept of a Loom interface, allowing users to generate, compare, and branch multiple responses from a single prompt. This empowers researchers, developers, and businesses to gain deeper insights into model behavior, explore the "multiverse" of possible outputs, and exercise granular control over AI-generated content.
+Latent Spaces is a next-generation platform designed to help users unlock the full potential of large language models (LLMs). Unlike traditional AI chat interfaces, Latent Spaces introduces the concept of a Loom interface, allowing users to generate, compare, and branch multiple responses from a single prompt. This empowers researchers, developers, and businesses to gain deeper insights into model behavior, explore the multiverse of possible outputs, and exercise granular control over AI-generated content.
 
 ## Key Features
 
