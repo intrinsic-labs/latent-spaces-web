@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiInstagram } from 'react-icons/fi';
 import { FaXTwitter } from 'react-icons/fa6';
 import { useTheme } from './ThemeProvider';
+import { discordInvite } from '@/lib/links';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -199,13 +200,13 @@ const Navigation = () => {
                   </div>
                 ))}
               </div>
-
+              
               <Link
-                href="/fundraising"
+                href={discordInvite}
                 className="inline-block bg-ls-accent hover:bg-ls-accent/30 backdrop-blur-md border border-ls-accent hover:border-ls-accentLight text-white py-3 w-full max-w-[325px]md:max-w-[400px] font-calling-code text-[1.1rem] rounded-full cursor-pointer transition-all duration-300 text-center my-8 max-w-xl"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Contribute Now
+                Join the Discord For Access
               </Link>
 
               <div className="mt-auto pt-8">
