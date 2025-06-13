@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import CodeChip from './CodeChip';
-import { loomInterface } from '@/lib/links';
+import { discordInvite, loomInterface } from '@/lib/links';
 
 const HomeHero = () => {
   const backgroundRef = useRef<HTMLDivElement>(null);
@@ -74,10 +74,10 @@ const HomeHero = () => {
           transition={{ delay: 0.1, duration: 0.5 }}
         >
           <a 
-            href="/fundraising" 
+            href={discordInvite} 
             className="inline-block hover:bg-ls-accent bg-ls-accent/30 backdrop-blur-md border hover:border-ls-accent border-ls-accentLight text-white py-3 w-full max-w-[325px]md:max-w-[400px] font-calling-code text-[1.1rem] rounded-full cursor-pointer transition-all duration-300 text-center mb-12 max-w-xl"
           >
-            Contribute Now
+            Join the Discord For Access
           </a>
         </motion.div>
         </div>

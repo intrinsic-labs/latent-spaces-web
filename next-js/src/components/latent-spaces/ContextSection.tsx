@@ -7,7 +7,7 @@ import AccentText from './AccentText';
 import CodeChip from './CodeChip';
 import { ClickableImage, FullscreenImageModal } from '../ui/ClickableImage';
 import Link from 'next/link';
-import { vimeoTeaser, blogProbableBeautyOfLLMs, loomInterface } from '@/lib/links';
+import { vimeoTeaser, blogProbableBeautyOfLLMs, loomInterface, devlog } from '@/lib/links';
 
 export default function ContextSection() {
   const parallaxBgRef = useRef<HTMLDivElement>(null);
@@ -98,6 +98,13 @@ export default function ContextSection() {
                 className="inline-block bg-transparent hover:bg-ls-accent/30 backdrop-blur-md border border-ls-accentLight hover:border-ls-accentLight text-ls-accentLight hover:text-white py-3 w-full font-calling-code text-[1.1rem] rounded-full cursor-pointer transition-all duration-300 text-center mt-6"
               >
                 What is a Loom Interface?
+              </Link>
+
+              <Link
+                href={devlog}
+                className="inline-block bg-transparent hover:bg-ls-accent/30 backdrop-blur-md border border-ls-accentLight hover:border-ls-accentLight text-ls-accentLight hover:text-white py-3 w-full font-calling-code text-[1.1rem] rounded-full cursor-pointer transition-all duration-300 text-center mt-6"
+              >
+                Check out the dev log
               </Link>
             </SectionContent>
 

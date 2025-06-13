@@ -12,7 +12,8 @@ import DiscordCTA from '../components/latent-spaces/DiscordCTA';
 import { useTheme } from '../components/ThemeProvider';
 import SectionContent from '../components/ui/SectionContent';
 import CodeChip from '../components/latent-spaces/CodeChip';
-import { devlog } from '@/lib/links';
+import { devlog, loomInterface } from '@/lib/links';
+import Link from 'next/link';
 
 export default function LatentSpacesPage() {
   const { setDarkTheme } = useTheme();
@@ -33,10 +34,7 @@ export default function LatentSpacesPage() {
     >
       <HomeHero />
       <ContextSection />
-      <Fundraising className="pt-12" />
-      <SectionContent className="max-w-3xl mx-auto px-6 text-center">
-      Want to see where we are and where we&apos;re going?<br /><CodeChip href={devlog}>Check out the dev log.</CodeChip>
-      </SectionContent>
+      {/* <Fundraising className="pt-12" /> */}
       <DiscordCTA />
     </motion.main>
   );

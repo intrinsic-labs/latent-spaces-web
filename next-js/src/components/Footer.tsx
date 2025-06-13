@@ -10,7 +10,7 @@ const Footer = () => {
 
   const footerLinks = {
     company: [
-      { name: 'Contribute Now', href: '/fundraising' },
+      // { name: 'Contribute Now', href: '/fundraising' },
       { name: 'OpenLoom', href: '/openloom' },
       { name: 'Development', href: '/devlog' },
       { name: 'Blog', href: '/blog' },

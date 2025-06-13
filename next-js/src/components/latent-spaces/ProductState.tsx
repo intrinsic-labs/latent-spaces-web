@@ -73,7 +73,7 @@ export default function ProductState() {
             </p>
             <br />
             <AccentText color="text-white">
-              The fundraiser aims to get the iOS app and web app ready for a public beta release.
+              We are working on getting the iOS app and web app ready for a public release.
             </AccentText>
             <div className="">
               {/* Vimeo embed */}
@@ -131,7 +131,7 @@ export default function ProductState() {
             </p>
             <br />
             <AccentText color="text-white">
-              The fundrasier also enables a stable OpenLoom V1.0.
+              We are also currently working on a stable OpenLoom V1.0.
             </AccentText>
           </SectionContent>
         </div>

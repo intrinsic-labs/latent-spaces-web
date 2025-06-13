@@ -57,14 +57,14 @@ const faqData = [
     question: "Is Latent Spaces free?",
     answer: "While in development, Latent Spaces will require you to connect your own API keys for language models. This means you'll need to pay for your own API usage based on the pricing of those providers. In the future, Latent Spaces will introduce a subscription model to simplify onboarding and give users access to custom features."
   },
-  {
-    question: "When will the beta be available?",
-    answer: "We're aiming to launch the first public beta of Latent Spaces mid-late Summer 2025, provided we reach our fundraising goals. Development timelines may adjust based on funding and development progress."
-  },
-  {
-    question: "How will the funds be used?",
-    answer: "Funds raised will directly support development of the Latent Spaces iOS app, the web app, and the OpenLoom protocol. This includes implementing core features like saving prompts and node editing, expanding capabilities like image uploads and voice transcription, and more. A detailed scope of work is outlined on the Development page."
-  },
+  // {
+  //   question: "When will the beta be available?",
+  //   answer: "We're aiming to launch the first public beta of Latent Spaces mid-late Summer 2025, provided we reach our fundraising goals. Development timelines may adjust based on funding and development progress."
+  // },
+  // {
+  //   question: "How will the funds be used?",
+  //   answer: "Funds raised will directly support development of the Latent Spaces iOS app, the web app, and the OpenLoom protocol. This includes implementing core features like saving prompts and node editing, expanding capabilities like image uploads and voice transcription, and more. A detailed scope of work is outlined on the Development page."
+  // },
 ];
 
 export default function FAQ() {
