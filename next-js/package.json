@@ -36,12 +36,14 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@sanity/client": "^7.14.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/react-syntax-highlighter": "^15.5.13",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
+    "groq": "^5.5.0",
     "typescript": "^5"
   }
 }

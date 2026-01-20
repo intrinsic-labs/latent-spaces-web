@@ -1,0 +1,28 @@
+{
+  "name": "latent-spaces-cms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sanity Studio for Latent Spaces",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "deploy-graphql": "sanity graphql deploy",
+    "typegen": "sanity schema extract --enforce-required-fields && sanity typegen generate"
+  },
+  "dependencies": {
+    "@sanity/vision": "^5.5.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sanity": "^5.5.0",
+    "styled-components": "^6.3.8"
+  },
+  "devDependencies": {
+    "@sanity/eslint-config-studio": "^4.0.0",
+    "@types/react": "^19.2.0",
+    "eslint": "^8.57.1",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2"
+  }
+}

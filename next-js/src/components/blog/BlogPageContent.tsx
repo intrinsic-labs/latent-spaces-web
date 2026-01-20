@@ -1,20 +1,26 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-import { type SanityDocument } from "next-sanity";
-import BlogHero from './BlogHero';
-import BlogPosts from './BlogPosts';
-import FeaturedPost from './FeaturedPost';
-import { useTheme } from '../../components/ThemeProvider';
-import Image from 'next/image';
-import { urlForImage } from '../../sanity/image';
+import { motion } from "framer-motion";
+import { useEffect } from "react";
+import BlogHero from "./BlogHero";
+import BlogPosts from "./BlogPosts";
+import FeaturedPost from "./FeaturedPost";
+import { useTheme } from "../../components/ThemeProvider";
+import { BlogPost } from "@/lib/blog";
 
 interface BlogPageContentProps {
-  posts: SanityDocument[];
+  posts: BlogPost[];
+  featuredPost: BlogPost | null;
+  categories: string[];
+  tags: string[];
 }
 
-export default function BlogPageContent({ posts }: BlogPageContentProps) {
+export default function BlogPageContent({
+  posts,
+  featuredPost,
+  categories,
+  tags,
+}: BlogPageContentProps) {
   const { setDarkTheme } = useTheme();
 
   // Set light theme when component mounts
@@ -25,14 +31,14 @@ export default function BlogPageContent({ posts }: BlogPageContentProps) {
 
   return (
     <motion.main
-      className="min-h-screen bg-background text-primary relative" 
+      className="min-h-screen bg-background text-primary relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
       <BlogHero />
-      <FeaturedPost />
-      <BlogPosts />
+      {featuredPost && <FeaturedPost post={featuredPost} />}
+      <BlogPosts posts={posts} categories={categories} tags={tags} />
     </motion.main>
   );
-} 
+}

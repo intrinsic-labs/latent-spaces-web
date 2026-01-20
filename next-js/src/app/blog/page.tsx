@@ -1,16 +1,34 @@
-import { type SanityDocument } from "next-sanity";
-import { client } from "@/sanity/client";
-import BlogPageContent from '@/components/blog/BlogPageContent';
+import {
+  getAllBlogPosts,
+  getFeaturedBlogPosts,
+  getAllCategories,
+  getAllTags,
+} from "@/lib/blog";
+import BlogPageContent from "@/components/blog/BlogPageContent";
 
-const POSTS_QUERY = `*[
-  _type == "post"
-  && defined(slug.current)
-]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt, coverImage}`;
-
-const options = { next: { revalidate: 30 } };
+export const metadata = {
+  title: "Blog | Intrinsic Labs",
+  description: "Insights and updates from the Intrinsic Labs team",
+};
 
 export default async function BlogPage() {
-  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
+  // Fetch all data server-side in parallel
+  const [posts, featuredPosts, categories, tags] = await Promise.all([
+    getAllBlogPosts(),
+    getFeaturedBlogPosts(),
+    getAllCategories(),
+    getAllTags(),
+  ]);
 
-  return <BlogPageContent posts={posts} />;
-} 
+  // Get the first featured post (or null if none exist)
+  const featuredPost = featuredPosts[0] || null;
+
+  return (
+    <BlogPageContent
+      posts={posts}
+      featuredPost={featuredPost}
+      categories={categories}
+      tags={tags}
+    />
+  );
+}
