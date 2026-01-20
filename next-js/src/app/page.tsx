@@ -2,18 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
-import Hero from '../components/latent-spaces/Hero';
 import HomeHero from '../components/latent-spaces/HomeHero';
 import ContextSection from '../components/latent-spaces/ContextSection';
-import LoomInterface from '../components/latent-spaces/LoomInterface';
-import Fundraising from '../components/latent-spaces/Fundraising';
-import FAQ from '../components/latent-spaces/FAQ';
 import DiscordCTA from '../components/latent-spaces/DiscordCTA';
 import { useTheme } from '../components/ThemeProvider';
-import SectionContent from '../components/ui/SectionContent';
-import CodeChip from '../components/latent-spaces/CodeChip';
-import { devlog, loomInterface } from '@/lib/links';
-import Link from 'next/link';
 
 export default function LatentSpacesPage() {
   const { setDarkTheme } = useTheme();

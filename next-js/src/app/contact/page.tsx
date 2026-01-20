@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { useForm as useFormspree } from '@formspree/react';
 import { useEffect, useState } from 'react';
 import { useTheme } from '@/components/ThemeProvider';
+import FAQ from '@/components/latent-spaces/FAQ';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name is required'),
@@ -52,7 +53,7 @@ export default function ContactPage() {
     >
       <div className="container-custom">
         <h1 className="text-6xl font-medium font-neue-montreal mb-12 text-center">Get In Touch</h1>
-        <p className="text-center font-cardo text-2xl max-w-xl mx-auto mb-12">We&apos;d love to hear from you. Whether you have a question, a suggestion, or just want to say hello, don&apos;t hesitate to reach out!</p>
+        <p className="text-center font-cardo text-2xl max-w-xl mx-auto mb-12">We&apos;d love to hear from you. Whether you have a question, a suggestion, or just want to say hello, don&apos;t hesitate to reach out! Check out the FAQs below.</p>
         
         <div className="max-w-lg mx-auto">
           {submitted ? (
@@ -130,6 +131,9 @@ export default function ContactPage() {
             </form>
           )}
         </div>
+      </div>
+      <div className='mt-20 max-w-xl mx-auto'>
+        <FAQ />
       </div>
     </motion.main>
   );
