@@ -29,7 +29,7 @@ export default function FeatureList() {
           viewport={{ once: true }}
           transition={{ duration: 0.2 }}
         >
-          <CodeChip size="large">App Improvements</CodeChip>
+          <CodeChip size="large">Mobile App Roadmap</CodeChip>
         </motion.div>
         <ul className="my-8">
           {mobileFeatures.map((feature, index) => (

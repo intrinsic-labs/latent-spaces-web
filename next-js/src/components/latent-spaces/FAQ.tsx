@@ -47,24 +47,24 @@ const FAQItem = ({ question, answer }: FAQItemProps) => {
 const faqData = [
   {
     question: "What is Latent Spaces?",
-    answer: "Latent Spaces is an app being developed for iOS, Android, and web that allows you to explore and pursue the many possible continuations of any prompt (a Loom interface), with a focus on understanding how language models actually work."
+    answer: "Latent Spaces is an app being developed for iOS, Android, and web that allows you to explore and pursue the many possible continuations of any prompt (making it a Loom interface), with a focus on understanding how language models actually work."
+  },
+  {
+    question: "Who is Latent Spaces for?",
+    answer: "Latent Spaces is for anyone wishing to understand LLMs on a deeper level. It aims to make some currently hard-to-find features and information accessible and easy to take advantage of."
+  },
+  {
+    question: "Where can I get the app?",
+    answer: "Lol we are cranking it out as fast as we can. Stay up to date on the Development page - a public release will be available in 2026."
   },
   {
     question: "Is Latent Spaces open source?",
-    answer: "Latent Spaces is proprietary, but the OpenLoom protocol is open source and can be used by other apps - in fact, that's the whole point! Read more on the OpenLoom page."
+    answer: "Latent Spaces is currently proprietary, but the OpenLoom protocol is open source and can be used by other apps - in fact, that's the whole point! Read more on the OpenLoom page."
   },
   {
     question: "Is Latent Spaces free?",
-    answer: "While in development, Latent Spaces will require you to connect your own API keys for language models. This means you'll need to pay for your own API usage based on the pricing of those providers. In the future, Latent Spaces will introduce a subscription model to simplify onboarding and give users access to custom features."
+    answer: "Latent Spaces is free to use and will remain so. It currently requires you to bring your own API keys to talk to models. This means you'll need to pay for your own API usage based on the pricing of providers. In the future, Latent Spaces will likely introduce an optional subscription model for users who don't want to use custom keys, as well as offer access to some planned features that would cause us to incur costs."
   },
-  // {
-  //   question: "When will the beta be available?",
-  //   answer: "We're aiming to launch the first public beta of Latent Spaces mid-late Summer 2025, provided we reach our fundraising goals. Development timelines may adjust based on funding and development progress."
-  // },
-  // {
-  //   question: "How will the funds be used?",
-  //   answer: "Funds raised will directly support development of the Latent Spaces iOS app, the web app, and the OpenLoom protocol. This includes implementing core features like saving prompts and node editing, expanding capabilities like image uploads and voice transcription, and more. A detailed scope of work is outlined on the Development page."
-  // },
 ];
 
 export default function FAQ() {
