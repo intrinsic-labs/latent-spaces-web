@@ -65,15 +65,15 @@ export default function ProductState() {
           className="absolute top-0 left-0 w-full h-[120%] z-0 opacity-15"
         />
         <div className="relative z-10">
-          <SectionTitle id="product-state">04.16.2025</SectionTitle>
+          <SectionTitle id="product-state">01.16.2026</SectionTitle>
           <SectionContent>
             <p>
               Currently, Latent Spaces exists as a prototype iOS app. Model providers <CodeChip href="https://openrouter.ai/" target="_blank" rel="noopener noreferrer">OpenRouter</CodeChip> and <CodeChip href="https://www.anthropic.com/" target="_blank" rel="noopener noreferrer">Anthropic</CodeChip> are
-              implemented, giving users access to over 300 models. Next in line is a web version, and then an Android native version.
+              implemented, giving users access to over 300 models. The next step is a refactor to support iOS, Android, and Web users simultaneously. 
             </p>
             <br />
             <AccentText color="text-white">
-              We are working on getting the iOS app and web app ready for a public release.
+              We are working on building the first version of the multiplatform app.
             </AccentText>
             <div className="">
               {/* Vimeo embed */}

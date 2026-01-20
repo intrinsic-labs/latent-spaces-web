@@ -50,7 +50,7 @@ const DevlogHeader = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="heading-xl mb-6 text-center"
           >
-            Development Log
+            Development
           </motion.h1>
           
           {/* Version badge */}
@@ -61,7 +61,7 @@ const DevlogHeader = () => {
             className="flex flex-wrap items-center gap-5 mb-10 justify-center"
           >
             <div className="text-md font-calling-code text-neutral-300 border border-neutral-400 rounded-full px-4 py-1 bg-neutral-300/10 backdrop-blur-md">
-              Current State: iOS Prototype
+              Current State: Cross Platform In-Dev
             </div>
           </motion.div>
         </div>

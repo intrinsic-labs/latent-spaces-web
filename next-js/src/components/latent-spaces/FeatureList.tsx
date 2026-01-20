@@ -3,7 +3,7 @@ import SectionTitle from '../ui/SectionTitle';
 import SectionContent from '../ui/SectionContent';
 import CodeChip from './CodeChip';
 import FeatureItem from './FeatureItem';
-import { iosFeatures, webFeatures, openLoomFeatures } from '@/lib/fundraisingData';
+import { mobileFeatures, webFeatures, openLoomFeatures } from '@/lib/fundraisingData';
 import { discordInvite } from '@/lib/links';
 
 export default function FeatureList() {
@@ -15,9 +15,9 @@ export default function FeatureList() {
         viewport={{ once: true }}
         transition={{ duration: 0.2 }}
       >
-        <SectionTitle>Planned Features</SectionTitle>
+        <SectionTitle>Features</SectionTitle>
         <SectionContent>
-          The following features are planned for the public beta release. These will be marked completed as they are implemented.
+          The following features are in development for the initial public release. These will be marked completed as they are implemented.
           Think something is missing? <CodeChip href={discordInvite}>Join the Discord</CodeChip> and let's talk!
         </SectionContent>
       </motion.div>
@@ -29,10 +29,10 @@ export default function FeatureList() {
           viewport={{ once: true }}
           transition={{ duration: 0.2 }}
         >
-          <CodeChip size="large">iOS App Improvements</CodeChip>
+          <CodeChip size="large">App Improvements</CodeChip>
         </motion.div>
         <ul className="my-8">
-          {iosFeatures.map((feature, index) => (
+          {mobileFeatures.map((feature, index) => (
             <FeatureItem
               key={feature.id}
               text={feature.text}
