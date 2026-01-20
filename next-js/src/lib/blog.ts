@@ -21,8 +21,8 @@ import type {
   ALL_POST_SLUGS_QUERY_RESULT,
 } from "@/sanity/sanity.types";
 
-// ISR configuration - revalidate every 30 seconds
-const REVALIDATE_TIME = 30;
+// ISR configuration - revalidate every 5 mins (fallback)
+const REVALIDATE_TIME = 300;
 
 // Types for blog data (transformed from Sanity types)
 export interface BlogPost {
@@ -79,7 +79,10 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
     ALL_POSTS_QUERY,
     {},
     {
-      next: { revalidate: REVALIDATE_TIME },
+      next: {
+        revalidate: REVALIDATE_TIME,
+        tags: ["posts"],
+      },
     },
   );
 
@@ -94,7 +97,10 @@ export async function getFeaturedBlogPosts(): Promise<BlogPost[]> {
     FEATURED_POSTS_QUERY,
     {},
     {
-      next: { revalidate: REVALIDATE_TIME },
+      next: {
+        revalidate: REVALIDATE_TIME,
+        tags: ["posts", "featured-posts"],
+      },
     },
   );
 
@@ -109,7 +115,10 @@ export async function getBlogPost(slug: string): Promise<BlogPost> {
     SINGLE_POST_QUERY,
     { slug },
     {
-      next: { revalidate: REVALIDATE_TIME },
+      next: {
+        revalidate: REVALIDATE_TIME,
+        tags: ["posts", `post-${slug}`],
+      },
     },
   );
 
@@ -139,7 +148,10 @@ export async function getRelatedPosts(
       tags: currentPost.tags,
     },
     {
-      next: { revalidate: REVALIDATE_TIME },
+      next: {
+        revalidate: REVALIDATE_TIME,
+        tags: ["posts"],
+      },
     },
   );
 
@@ -156,7 +168,10 @@ export async function getRelatedPosts(
         existingIds: existingIds,
       },
       {
-        next: { revalidate: REVALIDATE_TIME },
+        next: {
+          revalidate: REVALIDATE_TIME,
+          tags: ["posts"],
+        },
       },
     );
 
@@ -175,7 +190,10 @@ export async function getAllCategories(): Promise<string[]> {
     ALL_CATEGORIES_QUERY,
     {},
     {
-      next: { revalidate: REVALIDATE_TIME },
+      next: {
+        revalidate: REVALIDATE_TIME,
+        tags: ["posts", "categories"],
+      },
     },
   );
 
@@ -190,7 +208,10 @@ export async function getAllTags(): Promise<string[]> {
     ALL_TAGS_QUERY,
     {},
     {
-      next: { revalidate: REVALIDATE_TIME },
+      next: {
+        revalidate: REVALIDATE_TIME,
+        tags: ["posts", "tags"],
+      },
     },
   );
 
@@ -205,7 +226,10 @@ export async function getAllPostSlugs(): Promise<string[]> {
     ALL_POST_SLUGS_QUERY,
     {},
     {
-      next: { revalidate: REVALIDATE_TIME },
+      next: {
+        revalidate: REVALIDATE_TIME,
+        tags: ["posts"],
+      },
     },
   );
 
